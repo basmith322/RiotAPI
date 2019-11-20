@@ -18,22 +18,27 @@ class MenuActivity : AppCompatActivity() {
     }
 
     fun goToTop10(view: View) {
-        //TODO
+        val intent = Intent(this, LadderActivity::class.java)
+        startActivity(intent)
     }
 
     fun goToServerStatus(view: View)  {
-        //TODO
+        val intent = Intent(this, ServerActivity::class.java)
+        startActivity(intent)
     }
 
     fun goToMatchHistory(view: View) {
-        //TODO
+        val intent = Intent(this, MatchHistoryActivity::class.java)
+        startActivity(intent)
     }
 
     fun goToChampRotation(view: View) {
-        //TODO
+        val intent = Intent(this, ChampRotationActivity::class.java)
+        startActivity(intent)
     }
 
     fun goToSummonerProfile(view: View) {
-        //TODO
+        val intent = Intent(this, SummonerProfileActivity::class.java)
+        startActivity(intent)
     }
 }
