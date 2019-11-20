@@ -10,9 +10,9 @@
         android:id="@+id/textViewMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="51dp"
         android:text="@string/txtMenu"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLookup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,56 +20,80 @@
 
     <Button
         android:id="@+id/buttonLookup"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#009688"
+        android:onClick="goToLookup"
         android:text="@string/btnLookup"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMenu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonTopLadder"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/buttonLookup"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#009688"
+        android:onClick="goToTop10"
+        android:text="@string/btnTopLadder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLookup" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonServerStatus"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#009688"
+        android:onClick="goToServerStatus"
+        android:text="@string/btnServerStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTopLadder" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonMatchHistory"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#009688"
+        android:onClick="goToMatchHistory"
+        android:text="@string/btnMatchHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonServerStatus" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonChampRotation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
-        app:layout_constraintStart_toStartOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#009688"
+        android:onClick="goToChampRotation"
+        android:text="@string/btnChampRotation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMatchHistory" />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonSummonerProfile"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#009688"
+        android:onClick="goToSummonerProfile"
+        android:text="@string/btnSummonerProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChampRotation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,9 @@
     <string name="imgSummonerID">Summoner ID</string>
     <string name="txtMenu">Please Select an Option</string>
     <string name="btnLookup">Summoner Lookup</string>
+    <string name="btnTopLadder">Top 10 Ladder</string>
+    <string name="btnServerStatus">Server Status</string>
+    <string name="btnMatchHistory">Match History</string>
+    <string name="btnChampRotation">Free Champion Rotation</string>
+    <string name="btnSummonerProfile">Summoner Profile</string>
 </resources>
