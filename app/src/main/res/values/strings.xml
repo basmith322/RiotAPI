@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RiotAPI</string>
+    <string name="txtSummoner">Please Enter a Summoner Name</string>
+    <string name="editSummoner">Summoner Name</string>
+    <string name="btnSearch">Search</string>
+    <string name="txtResult">Result</string>
+    <string name="txtSummonerName">Summoner Name:</string>
+    <string name="txtSummonerID">Summoner ID:</string>
+    <string name="txtSummonerLevel">Summoner Level:</string>
+    <string name="txtSummonerRank">Summoner Rank:</string>
+    <string name="txtLastUpdated">Last Updated:</string>
+    <string name="imgSummonerID">Summoner ID</string>
+    <string name="txtMenu">Please Select an Option</string>
+    <string name="btnLookup">Summoner Lookup</string>
+</resources>
