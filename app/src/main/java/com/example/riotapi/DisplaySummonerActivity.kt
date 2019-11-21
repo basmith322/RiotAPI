@@ -1,11 +1,13 @@
 package com.example.riotapi
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class DisplaySummonerActivity : AppCompatActivity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_summoner)
@@ -17,19 +19,19 @@ class DisplaySummonerActivity : AppCompatActivity() {
         val summonerUpdated = intent.getStringExtra("lastUpdated")
 
         findViewById<TextView>(R.id.textViewSummonerName).apply {
-            text = getString(R.string.txtSummonerName) + " " + summonerName
+            text = """${getString(R.string.txtSummonerName)} $summonerName"""
         }
         findViewById<TextView>(R.id.textViewSummonerID).apply {
-            text = getString(R.string.txtSummonerID) + "" + summonerID
+            text = """${getString(R.string.txtSummonerID)}$summonerID"""
         }
         findViewById<TextView>(R.id.textViewSummonerLevel).apply{
-            text = getString(R.string.txtSummonerLevel) + " " + summonerLevel
+            text = """${getString(R.string.txtSummonerLevel)} $summonerLevel"""
         }
 /*        findViewById<TextView>(R.id.textViewSummonerRank).apply{
             text = getString(R.string.txtSummonerRank) + " " + summonerRank
         }*/
         findViewById<TextView>(R.id.textViewLastUpdated).apply{
-            text = getString(R.string.txtLastUpdated) + " " + summonerUpdated
+            text = """${getString(R.string.txtLastUpdated)} $summonerUpdated"""
         }
     }
 }

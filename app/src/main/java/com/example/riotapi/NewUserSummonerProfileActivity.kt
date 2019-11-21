@@ -1,19 +1,13 @@
 package com.example.riotapi
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.database.DatabaseException
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.core.SyncTree
 
 class NewUserSummonerProfileActivity : AppCompatActivity() {
     private lateinit var firebaseDatabase: DatabaseReference
@@ -45,9 +39,8 @@ class NewUserSummonerProfileActivity : AppCompatActivity() {
         builder.show()
     }
 
-
     fun basicWrite(view: View) {
-        var summonerName = findViewById<EditText>(R.id.editTextSummonerProfileSetup).text.toString()
+        val summonerName = findViewById<EditText>(R.id.editTextSummonerProfileSetup).text.toString()
         firebaseDatabase.child("summonerName").setValue(summonerName)
 
         startActivity(Intent(this@NewUserSummonerProfileActivity, LoginActivity::class.java))

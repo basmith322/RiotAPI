@@ -12,11 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var firebaseDatabase: DatabaseReference
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,14 +29,11 @@ class MainActivity : AppCompatActivity() {
         //Find the progress bar and hide it until necessary
         progressBar = findViewById(R.id.progressBar_reg)
         progressBar.visibility = View.INVISIBLE
-
-        //Initialize Database
-
     }
 
     fun registerUser(view: View) {
-        var email = findViewById<EditText>(R.id.editTextRegEmail).text.toString()
-        var password = findViewById<EditText>(R.id.editTextRegPassword).text.toString()
+        val email = findViewById<EditText>(R.id.editTextRegEmail).text.toString()
+        val password = findViewById<EditText>(R.id.editTextRegPassword).text.toString()
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_LONG).show()
@@ -57,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         progressBar.visibility = View.GONE
                         Toast.makeText(this@MainActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                        startActivity(Intent(this@MainActivity, NewUserSummonerProfileActivity::class.java))
                         finish()
                     } else {
                         val e = task.exception as FirebaseAuthException

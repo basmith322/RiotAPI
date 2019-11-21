@@ -1,13 +1,13 @@
 package com.example.riotapi
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
@@ -25,8 +25,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun loginUser(view: View) {
-        var email = findViewById<EditText>(R.id.editTextLoginEmail).text.toString()
-        var password = findViewById<EditText>(R.id.editTextLoginPassword).text.toString()
+        val email = findViewById<EditText>(R.id.editTextLoginEmail).text.toString()
+        val password = findViewById<EditText>(R.id.editTextLoginPassword).text.toString()
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_LONG).show()
@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 progressBar.visibility = View.GONE
                 Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@LoginActivity, NewUserSummonerProfileActivity::class.java))
+                startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
                 finish()
             } else {
                 val e = task.exception as FirebaseAuthException

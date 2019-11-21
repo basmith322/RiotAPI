@@ -1,20 +1,16 @@
 package com.example.riotapi
 
-import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.StrictMode
-import android.view.View
-import android.widget.*
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
-import com.merakianalytics.orianna.types.dto.status.ShardStatus
-import kotlinx.android.synthetic.main.activity_lookup_summoner.*
-import kotlinx.android.synthetic.main.activity_server.*
-import kotlinx.android.synthetic.main.activity_server.view.*
 
 class ServerActivity : AppCompatActivity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_server)
@@ -62,7 +58,7 @@ class ServerActivity : AppCompatActivity() {
         }*/
         val serverStatus = Orianna.shardStatusWithRegion(Region.EUROPE_WEST)
         findViewById<TextView>(R.id.textViewServerStatus).apply{
-            text = getString(R.string.txtServerStatus) + " " + serverStatus
+            text = """${getString(R.string.txtServerStatus)} $serverStatus"""
         }
     }
 }
