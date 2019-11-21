@@ -18,7 +18,7 @@ class LookupSummonerActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
-        Orianna.setRiotAPIKey("RGAPI-47860afe-dcc6-45f2-b30a-4bbe4428774c")
+        Orianna.setRiotAPIKey(getString(R.string.RiotAPiKey))
         Orianna.setDefaultRegion(Region.EUROPE_WEST)
     }
 
@@ -35,8 +35,8 @@ class LookupSummonerActivity : AppCompatActivity() {
                 .putExtra("summonerName", summonerName)
                 .putExtra("summonerID", summonerID)
                 .putExtra("summonerLevel", summonerLevel)
-                .putExtra("lastUpdated", lastUpdated)
-         /*.putExtra("summonerRank", summonerRank)*/
+/*                .putExtra("lastUpdated", lastUpdated)*/
+        /*.putExtra("summonerRank", summonerRank)*/
         startActivity(intent)
     }
 

@@ -12,21 +12,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SummonerProfileActivity"></activity>
-        <activity android:name=".ChampRotationActivity" />
-        <activity android:name=".MatchHistoryActivity" />
-        <activity android:name=".ServerActivity" />
-        <activity android:name=".LadderActivity" />
-        <activity android:name=".MenuActivity" >
+        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".SummonerProfileActivity"
+            android:label="Summoner Profile" />
+        <activity
+            android:name=".ChampRotationActivity"
+            android:label="Free Champion Rotation" />
+        <activity
+            android:name=".MatchHistoryActivity"
+            android:label="Match History" />
+        <activity
+            android:name=".ServerActivity"
+            android:label="Server Status" />
+        <activity
+            android:name=".LadderActivity"
+            android:label="Solo Queue Ladder" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="Main Menu" />
+        <activity
+            android:name=".LookupSummonerActivity"
+            android:label="Summoner Lookup" />
+        <activity
+            android:name=".DisplaySummonerActivity"
+            android:label="Summoner Results" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LookupSummonerActivity" />
-        <activity android:name=".DisplaySummonerActivity" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spnRegion">
+        <item>Brazil</item>
+        <item>Europe NorthEast</item>
+        <item>Europe West</item>
+        <item>Japan</item>]
+        <item>Korea</item>
+        <item>Latin America North</item>
+        <item>Latin America South</item>
+        <item>North America</item>
+        <item>Oceania</item>
+        <item>Russia</item>
+        <item>Turkey</item>
+    </string-array>
+</resources>

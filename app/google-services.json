@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "710882795328",
+    "firebase_url": "https://riotapi-4b571.firebaseio.com",
+    "project_id": "riotapi-4b571",
+    "storage_bucket": "riotapi-4b571.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710882795328:android:b8653ce25832e895c4e4a5",
+        "android_client_info": {
+          "package_name": "com.example.riotapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710882795328-rqcobbffor4umt59p7hut4ffldkmagv0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.riotapi",
+            "certificate_hash": "e253ca65817757c7a162cec8703661bb5ebac8df"
+          }
+        },
+        {
+          "client_id": "710882795328-r617qqrqiv433dikf1edcpq9pivakcbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhPyQsiKMUYM7SFHp8WKIjbd2o1rAJAos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710882795328-r617qqrqiv433dikf1edcpq9pivakcbq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
