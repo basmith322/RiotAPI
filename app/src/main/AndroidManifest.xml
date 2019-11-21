@@ -12,7 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".NewUserSummonerProfileActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="Riot API App">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SummonerProfileActivity"
             android:label="Summoner Profile" />
@@ -37,12 +46,9 @@
         <activity
             android:name=".DisplaySummonerActivity"
             android:label="Summoner Results" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="Register" />
     </application>
 
 </manifest>

@@ -11,9 +11,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseDatabase: DatabaseReference
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +25,15 @@ class MainActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
+        //Initialize Login Authentication
         firebaseAuth = FirebaseAuth.getInstance()
+
+        //Find the progress bar and hide it until necessary
         progressBar = findViewById(R.id.progressBar_reg)
         progressBar.visibility = View.INVISIBLE
+
+        //Initialize Database
+
     }
 
     fun registerUser(view: View) {
@@ -57,8 +66,7 @@ class MainActivity : AppCompatActivity() {
                 }
     }
 
-    fun goLogin(view: View){
+    fun goLogin(view: View) {
         startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-
     }
 }
