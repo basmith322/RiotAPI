@@ -18,7 +18,12 @@
         <activity android:name=".NewUserSummonerProfileActivity" />
         <activity
             android:name=".LoginActivity"
-            android:label="Riot API App" />
+            android:label="Riot API App" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".SummonerProfileActivity"
             android:label="Summoner Profile" />
@@ -36,12 +41,7 @@
             android:label="Solo Queue Ladder" />
         <activity
             android:name=".MenuActivity"
-            android:label="Main Menu">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Main Menu" />
         <activity
             android:name=".LookupSummonerActivity"
             android:label="Summoner Lookup" />

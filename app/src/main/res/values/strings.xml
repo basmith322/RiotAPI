@@ -37,4 +37,5 @@
     <string name="txtClientStatus">Client Server Status:</string>
     <string name="txtWebsiteStatus">Website Server Status:</string>
     <string name="txtSelectRegion">Please Select a Region</string>
+    <string name="btnLogOut">Log Out</string>
 </resources>

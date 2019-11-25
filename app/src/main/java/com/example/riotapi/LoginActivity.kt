@@ -22,6 +22,12 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         progressBar = findViewById(R.id.progressBar_login)
         progressBar.visibility = View.INVISIBLE
+
+        if (firebaseAuth.currentUser != null)
+        {
+            startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
+            finish()
+        }
     }
 
     fun loginUser(view: View) {
@@ -37,9 +43,10 @@ class LoginActivity : AppCompatActivity() {
             return
         }
         progressBar.visibility = View.VISIBLE
+
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this@LoginActivity) { task ->
-            //checking if succesful
+            //checking if successful
             if (task.isSuccessful) {
                 progressBar.visibility = View.GONE
                 Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()

@@ -24,7 +24,6 @@ class NewUserSummonerProfileActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Welcome to the Riot API App")
         builder.setMessage(R.string.txtNewSummoner)
-        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
         builder.setPositiveButton(android.R.string.yes) { dialog, which ->
             dialog.dismiss()

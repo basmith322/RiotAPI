@@ -3,13 +3,17 @@ package com.example.riotapi
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuActivity : AppCompatActivity() {
-
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     fun goToLookup(view: View) {
@@ -40,5 +44,11 @@ class MenuActivity : AppCompatActivity() {
     fun goToSummonerProfile(view: View) {
         val intent = Intent(this, SummonerProfileActivity::class.java)
         startActivity(intent)
+    }
+
+    fun signOut(view: View){
+        firebaseAuth.signOut()
+        Toast.makeText(this@MenuActivity, "Logout Successful", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this@MenuActivity, LoginActivity::class.java))
     }
 }
