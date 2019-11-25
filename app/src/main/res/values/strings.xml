@@ -39,4 +39,5 @@
     <string name="txtSelectRegion">Please Select a Region</string>
     <string name="btnLogOut">Log Out</string>
     <string name="txtRank">Rank</string>
+    <string name="freeChamp">ChampName</string>
 </resources>
