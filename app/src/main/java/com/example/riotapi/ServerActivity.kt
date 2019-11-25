@@ -18,7 +18,6 @@ import java.util.*
 class ServerActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_server)
@@ -74,7 +73,6 @@ class ServerActivity : AppCompatActivity() {
                             Orianna.setDefaultRegion(Region.EUROPE_WEST)
                         }
                     }
-                    progressBar.visibility = View.GONE
 
                     //Initialize shardstatus object
                     val server = Orianna.getShardStatus()
@@ -96,6 +94,8 @@ class ServerActivity : AppCompatActivity() {
                     textViewGameServerStatus.text = gameStatus
                     textViewClientServerStatus.text = clientStatus
                     textViewWebsiteServerStatus.text = websiteStatus
+
+                    progressBar.visibility = View.GONE
 
                 }
             }
