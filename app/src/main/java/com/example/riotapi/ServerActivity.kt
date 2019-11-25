@@ -7,13 +7,16 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.*
 import android.widget.ArrayAdapter
+import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
 import kotlinx.android.synthetic.main.activity_server.*
+import java.util.*
 
 class ServerActivity : AppCompatActivity() {
+    private lateinit var progressBar: ProgressBar
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,23 +27,35 @@ class ServerActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
 
         Orianna.setRiotAPIKey(getString(R.string.RiotAPiKey))
-        Orianna.setDefaultRegion(Region.EUROPE_WEST)
 
+        progressBar = findViewById(R.id.progressBarServer)
+        progressBar.visibility = View.INVISIBLE
+
+        serverStatus()
+    }
+
+    private fun serverStatus() {
+        //Initialize values for region and spinner and set the progress bar to be visible
         val regions = resources.getStringArray(R.array.spnRegion)
-
         val spinner = findViewById<Spinner>(R.id.spinnerRegion)
+        progressBar.visibility = View.VISIBLE
 
+        //Create Array Adapter for spinner to use
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                     android.R.layout.simple_spinner_item, regions)
             spinner.adapter = adapter
 
+            //Set up on selected item listener
             spinner.onItemSelectedListener = object :
                     OnItemSelectedListener {
+
+                //if no option is selected set default region to avoid crashing
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    Orianna.setDefaultRegion(Region.EUROPE_WEST)
                 }
 
+                //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
                     when (position) {
@@ -59,15 +74,28 @@ class ServerActivity : AppCompatActivity() {
                             Orianna.setDefaultRegion(Region.EUROPE_WEST)
                         }
                     }
+                    progressBar.visibility = View.GONE
+
+                    //Initialize shardstatus object
                     val server = Orianna.getShardStatus()
-                    textViewRegion.text = """${getString(R.string.txtRegion)}${server.regionTag}"""
-                    textViewGameServerStatus.text = """${getString(R.string.txtServerStatus)} 
-                        |${server.region.status.services[0].status.toUpperCase()}"""
-                            .trimMargin()
-                    textViewClientServerStatus.text = """${getString(R.string.txtClientStatus)} 
-                        |${server.region.status.services[3].status.toUpperCase()}""".trimMargin()
-                    textViewWebsiteServerStatus.text = """${getString(R.string.txtWebsiteStatus)} 
-                        |${server.region.status.services[2].status.toUpperCase()}""".trimMargin()
+
+                    //Create string values to store the results returned from the API call
+                    val regionTag = "${getString(R.string.txtRegion)} ${server.regionTag}"
+
+                    val gameStatus = ("${getString(R.string.txtGameStatus)} " +
+                            server.region.status.services[0].status.toUpperCase(locale = Locale.UK)).trimMargin()
+
+                    val clientStatus = ("${getString(R.string.txtClientStatus)} " +
+                            server.region.status.services[3].status.toUpperCase(locale = Locale.UK)).trimMargin()
+
+                    val websiteStatus = ("${getString(R.string.txtWebsiteStatus)} " +
+                            server.region.status.services[2].status.toUpperCase(locale = Locale.UK)).trimMargin()
+
+                    //Set texts in view to results of the function
+                    textViewRegion.text = regionTag
+                    textViewGameServerStatus.text = gameStatus
+                    textViewClientServerStatus.text = clientStatus
+                    textViewWebsiteServerStatus.text = websiteStatus
 
                 }
             }

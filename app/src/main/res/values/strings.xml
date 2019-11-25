@@ -36,4 +36,5 @@
     <string name="txtGameStatus">Game Server Status:</string>
     <string name="txtClientStatus">Client Server Status:</string>
     <string name="txtWebsiteStatus">Website Server Status:</string>
+    <string name="txtSelectRegion">Please Select a Region</string>
 </resources>
