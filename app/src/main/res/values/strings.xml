@@ -12,7 +12,7 @@
     <string name="txtMenu">Please Select an Option</string>
     <string name="btnLookup">Summoner Lookup</string>
     <string name="btnTopLadder">Solo Queue Ladder</string>
-    <string name="btnServerStatus">Server Status:</string>
+    <string name="btnServerStatus">Server Status</string>
     <string name="btnMatchHistory">Match History</string>
     <string name="btnChampRotation">Free Champion Rotation</string>
     <string name="btnSummonerProfile">Summoner Profile</string>
@@ -32,4 +32,8 @@
     <string name="skip">Skip</string>
     <string name="txtSubmit" >Submit</string>
     <string name="txtSummonerImage">Summoner Image</string>
+    <string name="txtRegion">"Region: "</string>
+    <string name="txtGameStatus">Game Server Status:</string>
+    <string name="txtClientStatus">Client Server Status:</string>
+    <string name="txtWebsiteStatus">Website Server Status:</string>
 </resources>
