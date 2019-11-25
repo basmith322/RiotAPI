@@ -3,10 +3,10 @@ package com.example.riotapi
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.StrictMode
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
+import kotlinx.android.synthetic.main.activity_server.*
 
 class ServerActivity : AppCompatActivity() {
 
@@ -56,10 +56,9 @@ class ServerActivity : AppCompatActivity() {
                 }
             }
         }*/
+
         val serverStatus = Orianna.shardStatusWithRegion(Region.EUROPE_WEST)
-        findViewById<TextView>(R.id.textViewServerStatus).apply{
-            text = """${getString(R.string.txtServerStatus)} $serverStatus"""
-        }
+        textViewServerStatus.text = serverStatus.get().region.status.toString()
     }
 }
 

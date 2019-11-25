@@ -6,10 +6,19 @@ import android.os.StrictMode
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.merakianalytics.orianna.Orianna
+import com.merakianalytics.orianna.types.common.Queue
 import com.merakianalytics.orianna.types.common.Region
 import kotlinx.android.synthetic.main.activity_lookup_summoner.*
+import org.joda.time.DateTime
 
 class LookupSummonerActivity : AppCompatActivity() {
+    private var summonerImage = ""
+    private var summonerName = ""
+    private var summonerID = ""
+    private var summonerLevel = 0
+    private var summonerTier = ""
+    private var summonerDivision = ""
+    private var lastUpdated: DateTime = DateTime.now()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,18 +35,26 @@ class LookupSummonerActivity : AppCompatActivity() {
         //Create summoner object and use summonerNamed method to obtain information about the player
         val summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
 
-        val summonerName = summoner.name
-        val summonerID = summoner.id
-        val summonerLevel = summoner.level
-        val summonerRank = summoner.leaguePositions
-        val lastUpdated = summoner.updated
+        summonerImage = summoner.profileIcon.image.url.replace("http", "https")
+        summonerName = summoner.name
+        summonerID = summoner.id
+        summonerLevel = summoner.level
+        if (summoner.getLeaguePosition(Queue.RANKED_SOLO) == null) {
+            summonerTier = "Unranked"
+            summonerDivision = ""
+        } else {
+            summonerTier = summoner.getLeaguePosition(Queue.RANKED_SOLO).tier.toString()
+            summonerDivision = summoner.getLeaguePosition(Queue.RANKED_SOLO).division.toString()
+        }
+        lastUpdated = summoner.updated
+
         val intent = Intent(this, DisplaySummonerActivity::class.java)
                 .putExtra("summonerName", summonerName)
                 .putExtra("summonerID", summonerID)
                 .putExtra("summonerLevel", summonerLevel)
-/*                .putExtra("lastUpdated", lastUpdated)*/
-        /*.putExtra("summonerRank", summonerRank)*/
+                .putExtra("lastUpdated", lastUpdated.toLocalDate().toString())
+                .putExtra("summonerImage", summonerImage)
+                .putExtra("summonerRank", "$summonerTier $summonerDivision")
         startActivity(intent)
     }
-
 }

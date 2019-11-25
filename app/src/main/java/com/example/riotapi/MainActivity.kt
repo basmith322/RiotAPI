@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.database.DatabaseReference
 
 class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
