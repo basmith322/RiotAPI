@@ -58,7 +58,7 @@ class ServerActivity : AppCompatActivity() {
         }*/
 
         val serverStatus = Orianna.shardStatusWithRegion(Region.EUROPE_WEST)
-        textViewServerStatus.text = serverStatus.get().region.status.toString()
+        textViewServerStatus.text = serverStatus.get().region.status.services[0].status.toString().toUpperCase()
     }
 }
 
