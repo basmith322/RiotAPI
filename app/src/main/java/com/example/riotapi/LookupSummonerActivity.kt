@@ -1,11 +1,6 @@
 package com.example.riotapi
 
-import android.content.Context
 import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
@@ -16,7 +11,6 @@ import com.merakianalytics.orianna.types.common.Queue
 import com.merakianalytics.orianna.types.common.Region
 import kotlinx.android.synthetic.main.activity_lookup_summoner.*
 import org.joda.time.DateTime
-import kotlin.math.sqrt
 
 
 class LookupSummonerActivity : AppCompatActivity(){
@@ -44,26 +38,31 @@ class LookupSummonerActivity : AppCompatActivity(){
         //Create summoner object and use summonerNamed method to obtain information about the player
         val summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
 
-        summonerImage = summoner.profileIcon.image.url.replace("http", "https")
-        summonerName = summoner.name
-        summonerID = summoner.id
-        summonerLevel = summoner.level
-        if (summoner.getLeaguePosition(Queue.RANKED_SOLO) == null) {
-            summonerTier = "Unranked"
-            summonerDivision = ""
-        } else {
-            summonerTier = summoner.getLeaguePosition(Queue.RANKED_SOLO).tier.toString()
-            summonerDivision = summoner.getLeaguePosition(Queue.RANKED_SOLO).division.toString()
+        if (summoner.id == null) {
+            Toast.makeText(this, "No summoner found", Toast.LENGTH_LONG).show()
         }
-        lastUpdated = summoner.updated
+        else {
+            summonerImage = summoner.profileIcon.image.url.replace("http", "https")
+            summonerName = summoner.name
+            summonerID = summoner.id
+            summonerLevel = summoner.level
+            if (summoner.getLeaguePosition(Queue.RANKED_SOLO) == null) {
+                summonerTier = "Unranked"
+                summonerDivision = ""
+            } else {
+                summonerTier = summoner.getLeaguePosition(Queue.RANKED_SOLO).tier.toString()
+                summonerDivision = summoner.getLeaguePosition(Queue.RANKED_SOLO).division.toString()
+            }
+            lastUpdated = summoner.updated
 
-        val intent = Intent(this, DisplaySummonerActivity::class.java)
-                .putExtra("summonerName", summonerName)
-                .putExtra("summonerID", summonerID)
-                .putExtra("summonerLevel", summonerLevel)
-                .putExtra("lastUpdated", lastUpdated.toLocalDate().toString())
-                .putExtra("summonerImage", summonerImage)
-                .putExtra("summonerRank", "$summonerTier $summonerDivision")
-        startActivity(intent)
+            val intent = Intent(this, DisplaySummonerActivity::class.java)
+                    .putExtra("summonerName", summonerName)
+                    .putExtra("summonerID", summonerID)
+                    .putExtra("summonerLevel", summonerLevel)
+                    .putExtra("lastUpdated", lastUpdated.toLocalDate().toString())
+                    .putExtra("summonerImage", summonerImage)
+                    .putExtra("summonerRank", "$summonerTier $summonerDivision")
+            startActivity(intent)
+        }
     }
 }

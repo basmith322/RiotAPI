@@ -5,33 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
+import com.merakianalytics.orianna.types.core.staticdata.Champion
 
 class ImageAdapter : RecyclerView.Adapter<ImageHolder>() {
-    private val imageUrls: Array<String> = arrayOf(
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[0].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[1].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[2].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[3].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[4].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[5].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[6].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[7].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[8].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[9].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[10].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[11].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[12].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[13].image.url.replace("http", "https"),
-            Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions[14].image.url.replace("http", "https")
-    )
+
+    private val championArray: Array<Champion> = Orianna.championRotationWithRegion(Region.EUROPE_WEST).get().freeChampions.toTypedArray()
 
     override fun getItemCount(): Int {
-        return this.imageUrls.size
+        return this.championArray.size
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        val imageUrl = imageUrls[position]
+        val imageUrl = championArray[position].image.url.replace("http", "https")
         holder.updateWithUrl(imageUrl)
+        holder.updateWithCallback(championArray[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {

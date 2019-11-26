@@ -60,6 +60,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun goRegister (view: View){
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
     }
 }

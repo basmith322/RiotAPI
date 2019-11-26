@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var progressBar: ProgressBar
 
@@ -46,21 +46,21 @@ class MainActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this@MainActivity) { task ->
-                    //checking if succesful
+                .addOnCompleteListener(this@RegisterActivity) { task ->
+                    //checking if successful
                     if (task.isSuccessful) {
                         progressBar.visibility = View.GONE
-                        Toast.makeText(this@MainActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@MainActivity, NewUserSummonerProfileActivity::class.java))
+                        Toast.makeText(this@RegisterActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@RegisterActivity, NewUserSummonerProfileActivity::class.java))
                         finish()
                     } else {
                         val e = task.exception as FirebaseAuthException
-                        Toast.makeText(this@MainActivity, "Registration Failed: " + e.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RegisterActivity, "Registration Failed: " + e.message, Toast.LENGTH_SHORT).show()
                     }
                 }
     }
 
     fun goLogin(view: View) {
-        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
     }
 }

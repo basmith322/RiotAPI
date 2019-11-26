@@ -16,8 +16,7 @@
     <string name="btnMatchHistory">Match History</string>
     <string name="btnChampRotation">Free Champion Rotation</string>
     <string name="btnSummonerProfile">Summoner Profile</string>
-    <string name="RiotAPiKey">RGAPI-73dab555-70e8-447b-b24c-ded2cd14725d</string>
-    <string name="txtServerStatus">Server Status</string>
+    <string name="RiotAPiKey">RGAPI-068da414-3e95-41c4-8270-bf1235e72fdb</string>
     <string name="txtRegister">Welcome to the Riot API App. Please Register to Continue</string>
     <string name="hintEmail">Enter Email</string>
     <string name="hintPassword">Enter Password</string>
@@ -30,7 +29,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="skip">Skip</string>
-    <string name="txtSubmit" >Submit</string>
+    <string name="txtSubmit">Submit</string>
     <string name="txtSummonerImage">Summoner Image</string>
     <string name="txtRegion">"Region: "</string>
     <string name="txtGameStatus">Game Server Status:</string>

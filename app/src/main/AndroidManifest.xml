@@ -15,14 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ChampInfoActivity"></activity>
         <activity android:name=".NewUserSummonerProfileActivity" />
         <activity
             android:name=".LoginActivity"
-            android:label="Riot API App" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:label="Riot API App">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SummonerProfileActivity"
@@ -49,7 +51,7 @@
             android:name=".DisplaySummonerActivity"
             android:label="Summoner Results" />
         <activity
-            android:name=".MainActivity"
+            android:name=".RegisterActivity"
             android:label="Register" />
     </application>
 
