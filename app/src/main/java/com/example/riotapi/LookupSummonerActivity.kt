@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.merakianalytics.orianna.Orianna
@@ -21,6 +22,7 @@ class LookupSummonerActivity : AppCompatActivity(){
     private var summonerTier = ""
     private var summonerDivision = ""
     private lateinit var lastUpdated: DateTime
+    private lateinit var progressBar: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +34,13 @@ class LookupSummonerActivity : AppCompatActivity(){
 
         Orianna.setRiotAPIKey(getString(R.string.RiotAPiKey))
         Orianna.setDefaultRegion(Region.EUROPE_WEST)
+
+        progressBar = findViewById(R.id.progressBarSummonerLoad)
+        progressBar.visibility = View.INVISIBLE
     }
 
     fun sendSummoner(view: View) {
+        progressBar.visibility = View.VISIBLE
         //Create summoner object and use summonerNamed method to obtain information about the player
         val summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
 
@@ -64,5 +70,10 @@ class LookupSummonerActivity : AppCompatActivity(){
                     .putExtra("summonerRank", "$summonerTier $summonerDivision")
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        progressBar.visibility = View.INVISIBLE
     }
 }
