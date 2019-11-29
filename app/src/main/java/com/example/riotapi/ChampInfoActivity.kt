@@ -1,9 +1,9 @@
 package com.example.riotapi
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_champ_info.view.*
 
@@ -30,6 +30,5 @@ class ChampInfoActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.textViewChampAbilities).apply {
             text = champAbilities
         }
-
     }
 }

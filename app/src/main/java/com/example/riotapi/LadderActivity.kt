@@ -1,7 +1,6 @@
 package com.example.riotapi
 
 import android.os.Bundle
-import android.os.StrictMode
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -19,11 +18,6 @@ class LadderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ladder)
-
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-
-        Orianna.setRiotAPIKey(getString(R.string.RiotAPiKey))
 
         progressBar = findViewById(R.id.progressBarRanked)
         progressBar.visibility = View.INVISIBLE

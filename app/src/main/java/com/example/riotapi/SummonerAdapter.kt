@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.merakianalytics.orianna.Orianna
-import com.merakianalytics.orianna.types.core.match.MatchHistory
+import com.merakianalytics.orianna.types.core.match.Match
 
 class SummonerAdapter: RecyclerView.Adapter<SummonerHolder>() {
     private val summoner = Orianna.summonerNamed("Ikbar").get()
-    private val matchArray: Array<MatchHistory> = Orianna.matchHistoriesForSummoners(summoner).get().toTypedArray()
+    private val matchArray: Array<Match> = Orianna.matchHistoryForSummoner(summoner).get().toTypedArray()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SummonerHolder {
         val summonerItem = LayoutInflater.from(parent.context).inflate(R.layout.summoner_item, parent, false)
@@ -20,8 +20,8 @@ class SummonerAdapter: RecyclerView.Adapter<SummonerHolder>() {
     }
 
     override fun onBindViewHolder(holder: SummonerHolder, position: Int) {
-        val matchHistorySummonerName = matchArray[position].startTime
-
+        holder.updateWithText(matchArray[position].id.toString())
+        holder.updateWithCallback(matchArray[position])
     }
 
 

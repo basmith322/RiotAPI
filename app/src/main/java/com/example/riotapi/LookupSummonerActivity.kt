@@ -2,14 +2,12 @@ package com.example.riotapi
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Queue
-import com.merakianalytics.orianna.types.common.Region
 import kotlinx.android.synthetic.main.activity_lookup_summoner.*
 import org.joda.time.DateTime
 
@@ -28,12 +26,6 @@ class LookupSummonerActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lookup_summoner)
-
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-
-        Orianna.setRiotAPIKey(getString(R.string.RiotAPiKey))
-        Orianna.setDefaultRegion(Region.EUROPE_WEST)
 
         progressBar = findViewById(R.id.progressBarSummonerLoad)
         progressBar.visibility = View.INVISIBLE
