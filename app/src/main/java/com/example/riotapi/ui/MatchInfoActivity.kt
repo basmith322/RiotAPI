@@ -1,8 +1,9 @@
-package com.example.riotapi
+package com.example.riotapi.ui
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riotapi.R
 import org.joda.time.Duration
 
 class MatchInfoActivity : AppCompatActivity() {

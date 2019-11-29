@@ -1,9 +1,10 @@
-package com.example.riotapi
+package com.example.riotapi.ui
 
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riotapi.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_champ_info.view.*
 

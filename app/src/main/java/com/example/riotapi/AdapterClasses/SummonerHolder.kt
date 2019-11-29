@@ -1,9 +1,11 @@
-package com.example.riotapi
+package com.example.riotapi.AdapterClasses
 
 import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.riotapi.R
+import com.example.riotapi.ui.MatchInfoActivity
 import com.merakianalytics.orianna.types.core.match.Match
 
 class SummonerHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

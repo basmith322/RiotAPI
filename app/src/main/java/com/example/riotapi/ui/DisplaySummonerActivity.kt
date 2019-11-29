@@ -1,4 +1,4 @@
-package com.example.riotapi
+package com.example.riotapi.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riotapi.R
 import com.squareup.picasso.Picasso
 import kotlin.math.sqrt
 

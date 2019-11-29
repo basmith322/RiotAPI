@@ -1,4 +1,4 @@
-package com.example.riotapi
+package com.example.riotapi.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riotapi.R
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Queue
 import kotlinx.android.synthetic.main.activity_lookup_summoner.*

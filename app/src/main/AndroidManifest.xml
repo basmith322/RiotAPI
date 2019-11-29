@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="RiotAPiApplication"
+        android:name=".ui.RiotAPiApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -16,13 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MatchInfoActivity"></activity>
+        <activity android:name=".ui.MatchInfoActivity"></activity>
         <activity
-            android:name=".ChampInfoActivity"
+            android:name=".ui.ChampInfoActivity"
             android:label="Champion Information" />
-        <activity android:name=".NewUserSummonerProfileActivity" />
+        <activity android:name=".ui.NewUserSummonerProfileActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="Riot API App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,31 +31,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SummonerProfileActivity"
+            android:name=".ui.SummonerProfileActivity"
             android:label="Summoner Profile" />
         <activity
-            android:name=".ChampRotationActivity"
+            android:name=".ui.ChampRotationActivity"
             android:label="Free Champion Rotation" />
         <activity
-            android:name=".MatchHistoryActivity"
+            android:name=".ui.MatchHistoryActivity"
             android:label="Match History" />
         <activity
-            android:name=".ServerActivity"
+            android:name=".ui.ServerActivity"
             android:label="Server Status" />
         <activity
-            android:name=".LadderActivity"
+            android:name=".ui.LadderActivity"
             android:label="Solo Queue Ladder" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".ui.MenuActivity"
             android:label="Main Menu" />
         <activity
-            android:name=".LookupSummonerActivity"
+            android:name=".ui.LookupSummonerActivity"
             android:label="Summoner Lookup" />
         <activity
-            android:name=".DisplaySummonerActivity"
+            android:name=".ui.DisplaySummonerActivity"
             android:label="Summoner Results" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.RegisterActivity"
             android:label="Register" />
     </application>
 

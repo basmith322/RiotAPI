@@ -1,8 +1,9 @@
-package com.example.riotapi
+package com.example.riotapi.AdapterClasses
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.riotapi.R
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
 import com.merakianalytics.orianna.types.core.staticdata.Champion

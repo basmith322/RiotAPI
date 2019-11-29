@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SummonerProfileActivity">
+    tools:context=".ui.SummonerProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DisplaySummonerActivity"
+        tools:context=".ui.DisplaySummonerActivity"
         tools:layout_editor_absoluteX="-27dp"
         tools:layout_editor_absoluteY="-28dp">
 

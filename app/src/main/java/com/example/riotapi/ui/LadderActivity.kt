@@ -1,4 +1,4 @@
-package com.example.riotapi
+package com.example.riotapi.ui
 
 import android.os.Bundle
 import android.view.View
@@ -7,10 +7,13 @@ import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riotapi.R
+import com.example.riotapi.Utilities
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Queue
 import com.merakianalytics.orianna.types.common.Region
 import kotlinx.android.synthetic.main.activity_ladder.*
+import java.util.stream.Collectors
 
 class LadderActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
@@ -44,29 +47,16 @@ class LadderActivity : AppCompatActivity() {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     Orianna.setDefaultRegion(Region.EUROPE_WEST)
                 }
-
                 //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
-                    when (position) {
-                        0 -> Orianna.setDefaultRegion(Region.BRAZIL)
-                        1 -> Orianna.setDefaultRegion(Region.EUROPE_NORTH_EAST)
-                        2 -> Orianna.setDefaultRegion(Region.EUROPE_WEST)
-                        3 -> Orianna.setDefaultRegion(Region.JAPAN)
-                        4 -> Orianna.setDefaultRegion(Region.KOREA)
-                        5 -> Orianna.setDefaultRegion(Region.LATIN_AMERICA_NORTH)
-                        6 -> Orianna.setDefaultRegion(Region.LATIN_AMERICA_SOUTH)
-                        7 -> Orianna.setDefaultRegion(Region.NORTH_AMERICA)
-                        8 -> Orianna.setDefaultRegion(Region.OCEANIA)
-                        9 -> Orianna.setDefaultRegion(Region.RUSSIA)
-                        10 -> Orianna.setDefaultRegion(Region.TURKEY)
-                        else -> {
-                            Orianna.setDefaultRegion(Region.EUROPE_WEST)
-                        }
-                    }
-                    val rankOne = Orianna.challengerLeagueInQueue(Queue.RANKED_SOLO)
-                            .get()[0].summoner.name
-                    textViewRankOne.text = rankOne.toString()
+                    val league = Orianna.challengerLeagueInQueue(Queue.RANKED_SOLO).withRegion(Utilities().setCurrentRegion(position))
+                            .get().stream()
+                            .sorted { o1, o2 -> o2.leaguePoints - o1.leaguePoints }
+                            .collect(Collectors.toList())
+
+                    val rankOne = league[0]
+                    textViewRankOne.text = rankOne!!.summoner.name
 
                     progressBar.visibility = View.GONE
                 }

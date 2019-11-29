@@ -1,9 +1,11 @@
-package com.example.riotapi
+package com.example.riotapi.AdapterClasses
 
 import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.riotapi.R
+import com.example.riotapi.ui.ChampInfoActivity
 import com.merakianalytics.orianna.types.core.staticdata.Champion
 import com.squareup.picasso.Picasso
 

@@ -1,7 +1,8 @@
-package com.example.riotapi
+package com.example.riotapi.ui
 
 import android.app.Application
 import android.os.StrictMode
+import com.example.riotapi.R
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
 
