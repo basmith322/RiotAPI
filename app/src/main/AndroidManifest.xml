@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ChampInfoActivity"></activity>
+        <activity android:name=".MatchInfoActivity"></activity>
+        <activity
+            android:name=".ChampInfoActivity"
+            android:label="Champion Information" />
         <activity android:name=".NewUserSummonerProfileActivity" />
         <activity
             android:name=".LoginActivity"

@@ -19,7 +19,7 @@ class ChampRotationActivity : AppCompatActivity() {
         Orianna.setRiotAPIKey(getString(R.string.RiotAPiKey))
         Orianna.setDefaultRegion(Region.EUROPE_WEST)
 
-        imageRecycler.layoutManager = GridLayoutManager(this, 4)
+        imageRecycler.layoutManager = GridLayoutManager(this, 3)
         imageRecycler.adapter = ImageAdapter()
 
     }
