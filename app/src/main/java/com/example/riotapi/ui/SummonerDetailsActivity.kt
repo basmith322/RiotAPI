@@ -2,12 +2,15 @@ package com.example.riotapi.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +24,8 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var sensor: Sensor
     private var shakeThresholdGravity: Float = 2f
     private var lastUpdateTime: Long = 0
+    var summonerName: String = ""
+    private lateinit var progressBar: ProgressBar
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +38,8 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
         lastUpdateTime = System.currentTimeMillis()
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
-        val summonerImage: String = intent.getStringExtra("summonerImage")
-        val summonerName = intent.getStringExtra("summonerName")
+        val summonerImage = intent.getStringExtra("summonerImage")
+        summonerName = intent.getStringExtra("summonerName")
         val summonerID = intent.getStringExtra("summonerID")
         val summonerLevel = intent.getIntExtra("summonerLevel", 0)
         val summonerRank = intent.getStringExtra("summonerRank")
@@ -60,6 +65,7 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
         findViewById<TextView>(R.id.textViewLastUpdated).apply {
             text = """${getString(R.string.txtLastUpdated)} $summonerUpdated"""
         }
+        progressBar = findViewById(R.id.progressBarSummonerResults)
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
@@ -109,6 +115,7 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
+        progressBar.visibility = View.INVISIBLE
         sensorManager.registerListener(this, sensorManager
                 .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
     }
@@ -116,5 +123,12 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
     override fun onPause() {
         super.onPause()
         sensorManager.unregisterListener(this)
+    }
+
+    fun summonerMatchHistory(view: View) {
+        progressBar.visibility = View.VISIBLE
+        val intent = Intent(this, MatchHistoryDetailsActivity::class.java)
+                .putExtra("summonerName", summonerName)
+        startActivity(intent)
     }
 }

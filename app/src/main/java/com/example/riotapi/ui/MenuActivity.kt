@@ -40,13 +40,6 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun goToMatchHistory(view: View) {
-        progressBar.visibility = View.VISIBLE
-        val intent = Intent(this, MatchHistoryListActivity::class.java)
-        startActivity(intent)
-
-    }
-
     fun goToChampRotation(view: View) {
         progressBar.visibility = View.VISIBLE
         val intent = Intent(this, ChampRotationActivity::class.java)

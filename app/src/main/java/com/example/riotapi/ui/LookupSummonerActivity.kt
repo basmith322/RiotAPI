@@ -10,9 +10,9 @@ import com.example.riotapi.Utilities
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Queue
 import com.merakianalytics.orianna.types.common.Region
+import com.merakianalytics.orianna.types.core.summoner.Summoner
 import kotlinx.android.synthetic.main.activity_lookup_summoner.*
 import org.joda.time.DateTime
-
 
 class LookupSummonerActivity : AppCompatActivity() {
     private var summonerImage = ""
@@ -23,6 +23,7 @@ class LookupSummonerActivity : AppCompatActivity() {
     private var summonerDivision = ""
     private lateinit var lastUpdated: DateTime
     private lateinit var progressBar: ProgressBar
+    private lateinit var summoner: Summoner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,17 +31,15 @@ class LookupSummonerActivity : AppCompatActivity() {
 
         progressBar = findViewById(R.id.progressBarSummonerLoad)
         progressBar.visibility = View.INVISIBLE
-
         setServer()
     }
 
     fun sendSummoner(view: View) {
-        progressBar.visibility = View.VISIBLE
-        //Create summoner object and use summonerNamed method to obtain information about the player
-        val summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
+
+        summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
 
         if (summoner.id == null) {
-            Toast.makeText(this, "No summoner found", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@LookupSummonerActivity, "No summoner found", Toast.LENGTH_LONG).show()
             progressBar.visibility = View.INVISIBLE
         } else {
             summonerImage = summoner.profileIcon.image.url.replace("http", "https")
@@ -56,7 +55,7 @@ class LookupSummonerActivity : AppCompatActivity() {
             }
             lastUpdated = summoner.updated
 
-            val intent = Intent(this, SummonerDetailsActivity::class.java)
+            val intent = Intent(this@LookupSummonerActivity, SummonerDetailsActivity::class.java)
                     .putExtra("summonerName", summonerName)
                     .putExtra("summonerID", summonerID)
                     .putExtra("summonerLevel", summonerLevel)
@@ -79,7 +78,7 @@ class LookupSummonerActivity : AppCompatActivity() {
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    Orianna.setDefaultRegion(Region.EUROPE_WEST)
+                    Orianna.setDefaultRegion(Region.BRAZIL)
                 }
 
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -94,3 +93,4 @@ class LookupSummonerActivity : AppCompatActivity() {
         progressBar.visibility = View.INVISIBLE
     }
 }
+

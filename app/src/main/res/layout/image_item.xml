@@ -3,4 +3,5 @@
     android:id="@+id/myImageView"
     android:layout_width="100dp"
     android:layout_height="100dp"
+    android:layout_margin="5dp"
     android:contentDescription="@string/freeChamp" />

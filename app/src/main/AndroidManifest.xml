@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.MatchHistoryDetailsActivity"></activity>
+        <activity android:name=".ui.MatchHistoryListActivity"></activity>
         <activity
             android:name=".ui.ChampInfoActivity"
             android:label="Champion Information" />
@@ -37,7 +37,7 @@
             android:name=".ui.ChampRotationActivity"
             android:label="Free Champion Rotation" />
         <activity
-            android:name=".ui.MatchHistoryListActivity"
+            android:name=".ui.MatchHistoryDetailsActivity"
             android:label="Match History" />
         <activity
             android:name=".ui.ServerActivity"

@@ -59,19 +59,6 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonTopLadder" />
 
     <Button
-        android:id="@+id/buttonMatchHistory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#009688"
-        android:onClick="goToMatchHistory"
-        android:text="@string/btnMatchHistory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonServerStatus" />
-
-    <Button
         android:id="@+id/buttonChampRotation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -82,7 +69,7 @@
         android:text="@string/btnChampRotation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMatchHistory" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonServerStatus" />
 
     <Button
         android:id="@+id/button"
