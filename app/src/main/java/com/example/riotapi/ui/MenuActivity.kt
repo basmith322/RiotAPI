@@ -30,7 +30,7 @@ class MenuActivity : AppCompatActivity() {
 
     fun goToTop10(view: View) {
         progressBar.visibility = View.VISIBLE
-        val intent = Intent(this, LadderActivity::class.java)
+        val intent = Intent(this, RankedLadderActivity::class.java)
         startActivity(intent)
     }
 
@@ -42,7 +42,7 @@ class MenuActivity : AppCompatActivity() {
 
     fun goToMatchHistory(view: View) {
         progressBar.visibility = View.VISIBLE
-        val intent = Intent(this, MatchHistoryActivity::class.java)
+        val intent = Intent(this, MatchHistoryListActivity::class.java)
         startActivity(intent)
 
     }

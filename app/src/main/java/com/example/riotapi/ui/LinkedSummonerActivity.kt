@@ -9,12 +9,12 @@ import com.example.riotapi.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class NewUserSummonerProfileActivity : AppCompatActivity() {
+class LinkedSummonerActivity : AppCompatActivity() {
     private lateinit var firebaseDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_user_summoner_profile)
+        setContentView(R.layout.activity_linked_summoner_activity)
 
         //Instantiate Database
         firebaseDatabase = FirebaseDatabase.getInstance().getReference("SummonerProfile")
@@ -31,7 +31,7 @@ class NewUserSummonerProfileActivity : AppCompatActivity() {
         }
 
         builder.setNegativeButton(R.string.skip) { dialog, which ->
-            startActivity(Intent(this@NewUserSummonerProfileActivity,
+            startActivity(Intent(this@LinkedSummonerActivity,
                     MenuActivity::class.java))
             finish()
         }

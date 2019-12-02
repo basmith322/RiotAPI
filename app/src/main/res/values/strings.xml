@@ -16,7 +16,7 @@
     <string name="btnMatchHistory">Match History</string>
     <string name="btnChampRotation">Free Champion Rotation</string>
     <string name="btnSummonerProfile">Summoner Profile</string>
-    <string name="RiotAPiKey">RGAPI-6db335d9-3c66-494c-9636-e52f5545fc75</string>
+    <string name="RiotAPiKey">RGAPI-63380112-b051-4c74-8764-d5f5c7502129</string>
     <string name="txtRegister">Welcome to the Riot API App. Please Register to Continue</string>
     <string name="hintEmail">Enter Email</string>
     <string name="hintPassword">Enter Password</string>

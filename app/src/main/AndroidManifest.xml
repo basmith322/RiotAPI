@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".ui.RiotAPiApplication"
+        android:name=".RiotAPiApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -16,11 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.MatchInfoActivity"></activity>
+        <activity android:name=".ui.MatchHistoryDetailsActivity"></activity>
         <activity
             android:name=".ui.ChampInfoActivity"
             android:label="Champion Information" />
-        <activity android:name=".ui.NewUserSummonerProfileActivity" />
+        <activity android:name=".ui.LinkedSummonerActivity" />
         <activity
             android:name=".ui.LoginActivity"
             android:label="Riot API App">
@@ -37,13 +37,13 @@
             android:name=".ui.ChampRotationActivity"
             android:label="Free Champion Rotation" />
         <activity
-            android:name=".ui.MatchHistoryActivity"
+            android:name=".ui.MatchHistoryListActivity"
             android:label="Match History" />
         <activity
             android:name=".ui.ServerActivity"
             android:label="Server Status" />
         <activity
-            android:name=".ui.LadderActivity"
+            android:name=".ui.RankedLadderActivity"
             android:label="Solo Queue Ladder" />
         <activity
             android:name=".ui.MenuActivity"
@@ -52,7 +52,7 @@
             android:name=".ui.LookupSummonerActivity"
             android:label="Summoner Lookup" />
         <activity
-            android:name=".ui.DisplaySummonerActivity"
+            android:name=".ui.SummonerDetailsActivity"
             android:label="Summoner Results" />
         <activity
             android:name=".ui.RegisterActivity"

@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         progressBar.visibility = View.GONE
                         Toast.makeText(this@RegisterActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@RegisterActivity, NewUserSummonerProfileActivity::class.java))
+                        startActivity(Intent(this@RegisterActivity, LinkedSummonerActivity::class.java))
                         finish()
                     } else {
                         val e = task.exception as FirebaseAuthException

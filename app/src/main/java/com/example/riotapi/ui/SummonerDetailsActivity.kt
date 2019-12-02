@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso
 import kotlin.math.sqrt
 
 
-class DisplaySummonerActivity : AppCompatActivity(), SensorEventListener {
+class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var sensor: Sensor
     private var shakeThresholdGravity: Float = 2f
@@ -25,7 +25,7 @@ class DisplaySummonerActivity : AppCompatActivity(), SensorEventListener {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_display_summoner)
+        setContentView(R.layout.activity_summoner_details)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensorManager.registerListener(this, sensorManager

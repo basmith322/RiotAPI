@@ -7,28 +7,31 @@ import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.riotapi.AdapterClasses.LadderAdapter
 import com.example.riotapi.R
 import com.example.riotapi.Utilities
 import com.merakianalytics.orianna.Orianna
-import com.merakianalytics.orianna.types.common.Queue
 import com.merakianalytics.orianna.types.common.Region
-import kotlinx.android.synthetic.main.activity_ladder.*
-import java.util.stream.Collectors
+import kotlinx.android.synthetic.main.activity_ranked_ladder.*
 
-class LadderActivity : AppCompatActivity() {
+class RankedLadderActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ladder)
+        setContentView(R.layout.activity_ranked_ladder)
 
         progressBar = findViewById(R.id.progressBarRanked)
         progressBar.visibility = View.INVISIBLE
 
-        rankedLadder()
+        recyclerViewRanked.layoutManager = LinearLayoutManager(this@RankedLadderActivity)
+        recyclerViewRanked.adapter = LadderAdapter()
+
+        setServer()
     }
 
-    private fun rankedLadder() {
+    private fun setServer() {
         val regions = resources.getStringArray(R.array.spnRegion)
         val spinner = findViewById<Spinner>(R.id.spinnerRankedRegion)
         progressBar.visibility = View.VISIBLE
@@ -47,18 +50,22 @@ class LadderActivity : AppCompatActivity() {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     Orianna.setDefaultRegion(Region.EUROPE_WEST)
                 }
+
                 //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
-                    val league = Orianna.challengerLeagueInQueue(Queue.RANKED_SOLO).withRegion(Utilities().setCurrentRegion(position))
+
+/*                    val league = Orianna.challengerLeagueInQueue(Queue.RANKED_SOLO).withRegion(Utilities().setCurrentRegion(position))
                             .get().stream()
                             .sorted { o1, o2 -> o2.leaguePoints - o1.leaguePoints }
                             .collect(Collectors.toList())
 
-                    val rankOne = league[0]
-                    textViewRankOne.text = rankOne!!.summoner.name
+                    val rankOne = league[0] */
 
+                    recyclerViewRanked.layoutManager = LinearLayoutManager(this@RankedLadderActivity)
+                    recyclerViewRanked.adapter = LadderAdapter()
                     progressBar.visibility = View.GONE
+                    return Orianna.setDefaultRegion(Utilities().setCurrentRegion(position))
                 }
             }
         }

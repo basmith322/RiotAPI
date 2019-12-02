@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.riotapi.AdapterClasses.SummonerAdapter
 import com.example.riotapi.R
-import kotlinx.android.synthetic.main.activity_match_history.*
+import kotlinx.android.synthetic.main.activity_match_history_details.*
 
-class MatchHistoryActivity : AppCompatActivity() {
+class MatchHistoryListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_match_history)
+        setContentView(R.layout.activity_match_history_details)
 
         recyclerViewMatches.layoutManager = LinearLayoutManager(this)
         recyclerViewMatches.adapter = SummonerAdapter()
