@@ -9,7 +9,7 @@ import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
-import com.example.riotapi.Utilities
+import com.example.riotapi.Utilities.SetCurrentRegion
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
 import com.merakianalytics.orianna.types.core.status.ShardStatus
@@ -38,7 +38,7 @@ class ServerActivity : AppCompatActivity() {
         //Create Array Adapter for spinner to use
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
-                    android.R.layout.simple_spinner_item, regions)
+                    android.R.layout.simple_spinner_dropdown_item, regions)
             spinner.adapter = adapter
 
             //Set up on selected item listener
@@ -49,23 +49,19 @@ class ServerActivity : AppCompatActivity() {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     Orianna.setDefaultRegion(Region.EUROPE_WEST)
                 }
-
                 //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
 
                     //Initialize shardstatus object
-                    val server = ShardStatus.withRegion(Utilities().setCurrentRegion(position)).get()
+                    val server = ShardStatus.withRegion(SetCurrentRegion().setCurrentRegion(position)).get()
 
                     //Create string values to store the results returned from the API call
                     val regionTag = "${getString(R.string.txtRegion)} ${server.regionTag}"
-
                     val gameStatus = ("${getString(R.string.txtGameStatus)} " +
                             server.region.status.services[0].status.toUpperCase(locale = Locale.UK)).trimMargin()
-
                     val clientStatus = ("${getString(R.string.txtClientStatus)} " +
                             server.region.status.services[3].status.toUpperCase(locale = Locale.UK)).trimMargin()
-
                     val websiteStatus = ("${getString(R.string.txtWebsiteStatus)} " +
                             server.region.status.services[2].status.toUpperCase(locale = Locale.UK)).trimMargin()
 

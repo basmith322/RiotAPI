@@ -2,7 +2,6 @@ package com.example.riotapi.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
@@ -10,6 +9,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
+import com.example.riotapi.Utilities.CloseKeyboard
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
@@ -19,9 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
+        setContentView(R.layout.activity_register)
 
         //Initialize Login Authentication
         firebaseAuth = FirebaseAuth.getInstance()
@@ -43,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter a valid password", Toast.LENGTH_LONG).show()
             return
         }
-
+        CloseKeyboard().hideKeyboard(view)
         progressBar.visibility = View.VISIBLE
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)

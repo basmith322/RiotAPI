@@ -14,7 +14,7 @@
     <string name="btnTopLadder">Solo Queue Ladder</string>
     <string name="btnServerStatus">Server Status</string>
     <string name="btnMatchHistory">Match History</string>
-    <string name="btnChampRotation">Free Champion Rotation</string>
+    <string name="btnChampRotation">Free Champions</string>
     <string name="btnSummonerProfile">Summoner Profile</string>
     <string name="txtRegister">Welcome to the Riot API App. Please Register to Continue</string>
     <string name="hintEmail">Enter Email</string>
@@ -43,4 +43,5 @@
     <string name="txtDuration">Duration</string>
     <string name="txtMap">Map</string>
     <string name="txtCreated">Match Created</string>
+    <string name="txtEmpty">Empty</string>
 </resources>

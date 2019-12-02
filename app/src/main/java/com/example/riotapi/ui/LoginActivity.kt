@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
+import com.example.riotapi.Utilities.CloseKeyboard
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
@@ -43,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter a valid password", Toast.LENGTH_LONG).show()
             return
         }
+        CloseKeyboard().hideKeyboard(view)
         progressBar.visibility = View.VISIBLE
 
         firebaseAuth.signInWithEmailAndPassword(email, password)

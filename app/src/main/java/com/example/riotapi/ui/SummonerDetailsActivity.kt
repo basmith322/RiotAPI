@@ -66,6 +66,14 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
             text = """${getString(R.string.txtLastUpdated)} $summonerUpdated"""
         }
         progressBar = findViewById(R.id.progressBarSummonerResults)
+        progressBar.visibility = View.INVISIBLE
+    }
+
+    fun summonerMatchHistory(view: View) {
+        progressBar.visibility = View.VISIBLE
+        val intent = Intent(this, MatchHistoryDetailsActivity::class.java)
+                .putExtra("summonerName", summonerName)
+        startActivity(intent)
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
@@ -113,22 +121,13 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        progressBar.visibility = View.INVISIBLE
-        sensorManager.registerListener(this, sensorManager
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
-    }
-
     override fun onPause() {
         super.onPause()
         sensorManager.unregisterListener(this)
     }
 
-    fun summonerMatchHistory(view: View) {
-        progressBar.visibility = View.VISIBLE
-        val intent = Intent(this, MatchHistoryDetailsActivity::class.java)
-                .putExtra("summonerName", summonerName)
-        startActivity(intent)
+    override fun onResume() {
+        super.onResume()
+        progressBar.visibility = View.INVISIBLE
     }
 }

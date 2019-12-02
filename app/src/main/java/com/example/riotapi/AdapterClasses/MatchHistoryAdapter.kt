@@ -12,7 +12,7 @@ class MatchHistoryAdapter(summonerName: String) : RecyclerView.Adapter<MatchHist
     private val matchArray: Array<Match> = Orianna.matchHistoryForSummoner(summoner).get().toTypedArray()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchHistoryHolder {
-        val summonerItem = LayoutInflater.from(parent.context).inflate(R.layout.summoner_item, parent, false)
+        val summonerItem = LayoutInflater.from(parent.context).inflate(R.layout.text_item, parent, false)
         return MatchHistoryHolder(summonerItem)
     }
 

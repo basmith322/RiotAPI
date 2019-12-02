@@ -24,10 +24,10 @@ class RankedLadderActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBarRanked)
         progressBar.visibility = View.INVISIBLE
 
-        setServer()
+        setServerForLadder()
     }
 
-    private fun setServer() {
+    private fun setServerForLadder() {
         val regions = resources.getStringArray(R.array.spnRegion)
         val spinner = findViewById<Spinner>(R.id.spinnerRankedRegion)
         progressBar.visibility = View.VISIBLE
@@ -35,7 +35,7 @@ class RankedLadderActivity : AppCompatActivity() {
         //Create Array Adapter for spinner to use
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
-                    android.R.layout.simple_spinner_item, regions)
+                    android.R.layout.simple_spinner_dropdown_item, regions)
             spinner.adapter = adapter
 
             //Set up on selected item listener

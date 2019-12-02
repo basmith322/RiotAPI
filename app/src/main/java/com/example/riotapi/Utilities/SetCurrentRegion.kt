@@ -1,8 +1,8 @@
-package com.example.riotapi
+package com.example.riotapi.Utilities
 
 import com.merakianalytics.orianna.types.common.Region
 
-class Utilities {
+class SetCurrentRegion {
     fun setCurrentRegion(position: Int): Region =
             when (position) {
                 0 -> Region.BRAZIL

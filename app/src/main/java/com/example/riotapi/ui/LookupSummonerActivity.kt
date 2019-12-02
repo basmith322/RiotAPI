@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
-import com.example.riotapi.Utilities
+import com.example.riotapi.Utilities.CloseKeyboard
+import com.example.riotapi.Utilities.SetCurrentRegion
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Queue
 import com.merakianalytics.orianna.types.common.Region
@@ -31,17 +32,19 @@ class LookupSummonerActivity : AppCompatActivity() {
 
         progressBar = findViewById(R.id.progressBarSummonerLoad)
         progressBar.visibility = View.INVISIBLE
-        setServer()
+        setServerForLookup()
     }
 
     fun sendSummoner(view: View) {
-
         summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
 
+//        progressBar.visibility = View.VISIBLE
         if (summoner.id == null) {
             Toast.makeText(this@LookupSummonerActivity, "No summoner found", Toast.LENGTH_LONG).show()
-            progressBar.visibility = View.INVISIBLE
         } else {
+            progressBar.visibility = View.VISIBLE
+            CloseKeyboard().hideKeyboard(view)
+
             summonerImage = summoner.profileIcon.image.url.replace("http", "https")
             summonerName = summoner.name
             summonerID = summoner.id
@@ -66,28 +69,24 @@ class LookupSummonerActivity : AppCompatActivity() {
         }
     }
 
-    private fun setServer() {
+    private fun setServerForLookup() {
         val regions = resources.getStringArray(R.array.spnRegion)
         val spinner = findViewById<Spinner>(R.id.spnRegionSummoner)
-        progressBar.visibility = View.VISIBLE
 
         if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, regions)
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, regions)
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     Orianna.setDefaultRegion(Region.BRAZIL)
                 }
-
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    return Orianna.setDefaultRegion(Utilities().setCurrentRegion(position))
+                    return Orianna.setDefaultRegion(SetCurrentRegion().setCurrentRegion(position))
                 }
             }
         }
     }
-
     override fun onResume() {
         super.onResume()
         progressBar.visibility = View.INVISIBLE
