@@ -21,8 +21,10 @@ class MatchHistoryListActivity : AppCompatActivity() {
         val matchCreated = intent.getSerializableExtra("matchCreated")
 
         findViewById<TextView>(R.id.textViewDuration).apply {
-            if (matchDuration is Duration) text = "${getString(R.string.txtDuration)}: " +
-                    "${matchDuration.standardMinutes}"
+            if (matchDuration is Duration) {
+                text = "${getString(R.string.txtDuration)}: " +
+                        "${matchDuration.standardMinutes}"
+            }
         }
         findViewById<TextView>(R.id.textViewMap).apply {
             if (matchMap is Map) text = "${getString(R.string.txtMap)}: " +

@@ -37,12 +37,12 @@ class LookupSummonerActivity : AppCompatActivity() {
 
     fun sendSummoner(view: View) {
         summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
+        progressBar.visibility = View.VISIBLE
 
-//        progressBar.visibility = View.VISIBLE
         if (summoner.id == null) {
             Toast.makeText(this@LookupSummonerActivity, "No summoner found", Toast.LENGTH_LONG).show()
+            progressBar.visibility = View.INVISIBLE
         } else {
-            progressBar.visibility = View.VISIBLE
             CloseKeyboard().hideKeyboard(view)
 
             summonerImage = summoner.profileIcon.image.url.replace("http", "https")

@@ -28,7 +28,9 @@ class LadderAdapter(position: Int) : RecyclerView.Adapter<LadderHolder>() {
     }
 
     override fun onBindViewHolder(holder: LadderHolder, position: Int) {
-        holder.updateWithText("Rank " + (position + 1) + " : " + rankedArray[position].summoner.name)
+        holder.updateWithText("Rank " + (position + 1) + " : "
+                + rankedArray[position].summoner.name + "\nLeague Points: "
+                + rankedArray[position].leaguePoints)
     }
 
 }
