@@ -19,8 +19,11 @@ class MatchHistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, MatchHistoryListActivity::class.java)
                     .putExtra("matchDuration", match.duration)
-                    .putExtra("matchMap", match.map)
+                    .putExtra("matchMap", match.map.name)
                     .putExtra("matchCreated", match.creationTime)
+                    .putExtra("matchSide", match.participants[0].team.side)
+                    .putExtra("matchWinner", match.participants[0].team.isWinner)
+                    .putExtra("championPlayed", match.participants[0].champion.name)
             itemView.context.startActivity(intent)
         }
     }

@@ -40,8 +40,13 @@
     <string name="txtBlurb">ChampBlurb</string>
     <string name="txtChampAbilities">ChampAbilities</string>
     <string name="imgViewChampImage">ChampImage</string>
-    <string name="txtDuration">Duration</string>
-    <string name="txtMap">Map</string>
-    <string name="txtCreated">Match Created</string>
+    <string name="txtDuration">Duration:</string>
+    <string name="txtMap">Map:</string>
+    <string name="txtCreated">Match Created:</string>
     <string name="txtEmpty">Empty</string>
+    <string name="txtWiner">Winner:</string>
+    <string name="txtWinner">Winner:</string>
+    <string name="txtSide">Side:</string>
+    <string name="txtChampionName">Champion Name:</string>
+    <string name="txtSelectMatch">Please select a match from the list for more details</string>
 </resources>
