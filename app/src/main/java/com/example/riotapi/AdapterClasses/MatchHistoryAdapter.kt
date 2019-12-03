@@ -9,7 +9,7 @@ import com.merakianalytics.orianna.types.core.match.Match
 
 class MatchHistoryAdapter(summonerName: String) : RecyclerView.Adapter<MatchHistoryHolder>() {
     private val summoner = Orianna.summonerNamed(summonerName).get()
-    private val matchArray: Array<Match> = Orianna.matchHistoryForSummoner(summoner).get().toTypedArray()
+    private val matchArray: List<Match> = Orianna.matchHistoryForSummoner(summoner).get().toTypedArray().take(20)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchHistoryHolder {
         val summonerItem = LayoutInflater.from(parent.context).inflate(R.layout.text_item, parent, false)
@@ -17,7 +17,7 @@ class MatchHistoryAdapter(summonerName: String) : RecyclerView.Adapter<MatchHist
     }
 
     override fun getItemCount(): Int {
-       return this.matchArray.size
+        return this.matchArray.size
     }
 
     override fun onBindViewHolder(holder: MatchHistoryHolder, position: Int) {

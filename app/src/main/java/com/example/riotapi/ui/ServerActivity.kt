@@ -51,7 +51,7 @@ class ServerActivity : AppCompatActivity() {
                 }
                 //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
+                                            view: View?, position: Int, id: Long) {
 
                     //Initialize shardstatus object
                     val server = ShardStatus.withRegion(SetCurrentRegion().setCurrentRegion(position)).get()

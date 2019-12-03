@@ -49,7 +49,7 @@ class RankedLadderActivity : AppCompatActivity() {
 
                 //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
+                                            view: View?, position: Int, id: Long) {
                     recyclerViewRanked.layoutManager = LinearLayoutManager(this@RankedLadderActivity)
                     recyclerViewRanked.adapter = LadderAdapter(position)
                     progressBar.visibility = View.GONE
