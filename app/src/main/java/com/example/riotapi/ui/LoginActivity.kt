@@ -25,8 +25,7 @@ class LoginActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar_login)
         progressBar.visibility = View.INVISIBLE
 
-        if (firebaseAuth.currentUser != null)
-        {
+        if (firebaseAuth.currentUser != null) {
             startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
             finish()
         }
@@ -49,20 +48,20 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this@LoginActivity) { task ->
-            //checking if successful
-            if (task.isSuccessful) {
-                progressBar.visibility = View.GONE
-                Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
-                finish()
-            } else {
-                val e = task.exception as FirebaseAuthException
-                Toast.makeText(this@LoginActivity, "Login Failed: " + e.message, Toast.LENGTH_SHORT).show()
-            }
-        }
+                    //checking if successful
+                    if (task.isSuccessful) {
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
+                        finish()
+                    } else {
+                        val e = task.exception as FirebaseAuthException
+                        Toast.makeText(this@LoginActivity, "Login Failed: " + e.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
     }
 
-    fun goRegister (view: View){
+    fun goRegister(view: View) {
         startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
     }
 }

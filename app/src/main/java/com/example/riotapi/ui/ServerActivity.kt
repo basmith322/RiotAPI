@@ -49,6 +49,7 @@ class ServerActivity : AppCompatActivity() {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     Orianna.setDefaultRegion(Region.EUROPE_WEST)
                 }
+
                 //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View?, position: Int, id: Long) {

@@ -22,6 +22,7 @@ class LookupSummonerActivity : AppCompatActivity() {
     private var summonerLevel = 0
     private var summonerTier = ""
     private var summonerDivision = ""
+    private var currentRegion: Region? = null
     private lateinit var lastUpdated: DateTime
     private lateinit var progressBar: ProgressBar
     private lateinit var summoner: Summoner
@@ -36,7 +37,7 @@ class LookupSummonerActivity : AppCompatActivity() {
     }
 
     fun sendSummoner(view: View) {
-        summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).get()
+        summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).withRegion(currentRegion).get()
         progressBar.visibility = View.VISIBLE
 
         if (summoner.id == null) {
@@ -79,14 +80,16 @@ class LookupSummonerActivity : AppCompatActivity() {
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    Orianna.setDefaultRegion(Region.BRAZIL)
+                    currentRegion = Region.BRAZIL
                 }
+
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    return Orianna.setDefaultRegion(SetCurrentRegion().setCurrentRegion(position))
+                    currentRegion = SetCurrentRegion().setCurrentRegion(position)
                 }
             }
         }
     }
+
     override fun onResume() {
         super.onResume()
         progressBar.visibility = View.INVISIBLE

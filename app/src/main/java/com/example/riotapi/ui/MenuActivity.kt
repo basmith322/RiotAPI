@@ -34,7 +34,7 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun goToServerStatus(view: View)  {
+    fun goToServerStatus(view: View) {
         progressBar.visibility = View.VISIBLE
         val intent = Intent(this, ServerActivity::class.java)
         startActivity(intent)
@@ -52,7 +52,7 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun signOut(view: View){
+    fun signOut(view: View) {
         progressBar.visibility = View.VISIBLE
         firebaseAuth.signOut()
         Toast.makeText(this@MenuActivity, "Logout Successful", Toast.LENGTH_SHORT).show()

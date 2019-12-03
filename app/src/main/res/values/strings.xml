@@ -34,7 +34,6 @@
     <string name="txtWebsiteStatus">Website Server Status:</string>
     <string name="txtSelectRegion">Please Select a Region</string>
     <string name="btnLogOut">Log Out</string>
-    <string name="txtRank">Rank</string>
     <string name="freeChamp">ChampName</string>
     <string name="txtSelectChamp">Tap on a champion icon to learn more</string>
     <string name="txtBlurb">ChampBlurb</string>
@@ -44,7 +43,6 @@
     <string name="txtMap">Map:</string>
     <string name="txtCreated">Match Created:</string>
     <string name="txtEmpty">Empty</string>
-    <string name="txtWiner">Winner:</string>
     <string name="txtWinner">Winner:</string>
     <string name="txtSide">Side:</string>
     <string name="txtChampionName">Champion Name:</string>

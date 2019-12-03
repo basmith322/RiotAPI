@@ -3,29 +3,22 @@ package com.example.riotapi.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
 import com.squareup.picasso.Picasso
-import kotlin.math.sqrt
 
 
-class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
+class SummonerDetailsActivity : AppCompatActivity() {
     private lateinit var sensorManager: SensorManager
-    private lateinit var sensor: Sensor
-    private var shakeThresholdGravity: Float = 2f
-    private var lastUpdateTime: Long = 0
     var summonerName: String = ""
     private lateinit var progressBar: ProgressBar
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +26,7 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.activity_summoner_details)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        sensorManager.registerListener(this, sensorManager
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
-        lastUpdateTime = System.currentTimeMillis()
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+//        ShakeMethod().ShakeShakeShakeSenora(sensorManager)
 
         val summonerImage = intent.getStringExtra("summonerImage")
         summonerName = intent.getStringExtra("summonerName")
@@ -69,6 +59,12 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
         progressBar.visibility = View.INVISIBLE
     }
 
+//    fun callback(): Void {
+//        Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
+//        finish()
+//        startActivity(intent)
+//    }
+
     fun summonerMatchHistory(view: View) {
         progressBar.visibility = View.VISIBLE
         val intent = Intent(this, MatchHistoryDetailsActivity::class.java)
@@ -76,55 +72,10 @@ class SummonerDetailsActivity : AppCompatActivity(), SensorEventListener {
         startActivity(intent)
     }
 
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        when (accuracy) {
-            SensorManager.SENSOR_STATUS_UNRELIABLE -> {
-            }
-            SensorManager.SENSOR_STATUS_ACCURACY_LOW -> {
-            }
-            SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM -> {
-            }
-            SensorManager.SENSOR_STATUS_ACCURACY_HIGH -> {
-            }
-        }
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        if (event!!.sensor.type == Sensor.TYPE_ACCELEROMETER) {
-            getAccelerometer(event)
-        }
-    }
-
-    private fun getAccelerometer(event: SensorEvent) {
-        val values: FloatArray = event.values
-
-        val x = values[0]
-        val y = values[0]
-        val z = values[1]
-
-        val gX = x / SensorManager.GRAVITY_EARTH
-        val gY = y / SensorManager.GRAVITY_EARTH
-        val gZ = z / SensorManager.GRAVITY_EARTH
-
-        val gForce: Float = sqrt(gX * gX + gY * gY + gZ * gZ)
-
-        val currentTime:Long = System.currentTimeMillis()
-
-        if (gForce >= shakeThresholdGravity) {
-            if (currentTime - lastUpdateTime < 200) {
-                return
-            }
-            lastUpdateTime = currentTime
-            Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
-            finish()
-            startActivity(intent)
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        sensorManager.unregisterListener(this)
-    }
+//    override fun onPause() {
+//        super.onPause()
+//        sensorManager.unregisterListener(this)
+//    }
 
     override fun onResume() {
         super.onResume()

@@ -3,21 +3,22 @@ package com.example.riotapi.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class LinkedSummonerActivity : AppCompatActivity() {
-    private lateinit var firebaseDatabase: DatabaseReference
+    private lateinit var firebaseDatabase: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_linked_summoner_activity)
 
         //Instantiate Database
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference("SummonerProfile")
+        firebaseDatabase = FirebaseDatabase.getInstance()
 
         //Building the alert dialog
         AlertDialog.Builder(this)
@@ -39,5 +40,12 @@ class LinkedSummonerActivity : AppCompatActivity() {
     }
 
     fun basicWrite(view: View) {
+        var summonerName = findViewById<TextView>(R.id.editTextSummonerProfileSetup).text.toString()
+        val user = FirebaseAuth.getInstance().currentUser
+        var uid = ""
+        user?.let { uid = user.uid }
+        firebaseDatabase.getReference(uid).child("summonerName").setValue(summonerName)
+        val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
     }
 }
