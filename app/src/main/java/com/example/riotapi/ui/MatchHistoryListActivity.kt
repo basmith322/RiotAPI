@@ -25,8 +25,7 @@ class MatchHistoryListActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.textViewDuration).apply {
             if (matchDuration is Duration) {
-                text = "${getString(R.string.txtDuration)} " +
-                        "${matchDuration.standardMinutes}"
+                text = "${getString(R.string.txtDuration)} ${matchDuration.standardMinutes} Minutes"
             }
         }
         findViewById<TextView>(R.id.textViewMap).apply {

@@ -7,13 +7,13 @@ import android.hardware.SensorManager
 import kotlin.math.sqrt
 
 class ShakeMethod : SensorEventListener {
-    lateinit var sensorManager: SensorManager
-    lateinit var sensor: Sensor
-    var shakeThresholdGravity: Float = 2f
-    var lastUpdateTime: Long = 0
-    var callback: (() -> Void)? = null
+    private lateinit var sensorManager: SensorManager
+    private lateinit var sensor: Sensor
+    private var shakeThresholdGravity: Float = 2f
+    private var lastUpdateTime: Long = 0
+    private var callback: (() -> Void)? = null
 
-    fun ShakeShakeShakeSenora(sensorManager: SensorManager, callback: (() -> Void)?) {
+    fun shakeShakeShakeSenora(sensorManager: SensorManager, callback: (() -> Void)?) {
         this.sensorManager = sensorManager
         sensorManager.registerListener(this, sensorManager
                 .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)

@@ -8,5 +8,5 @@
     android:contentDescription="@string/freeChamp"
     android:text="@string/txtEmpty"
     android:textAlignment="textStart"
-    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
     android:textSize="16sp" />

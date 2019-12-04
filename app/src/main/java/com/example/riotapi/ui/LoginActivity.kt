@@ -57,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         val e = task.exception as FirebaseAuthException
                         Toast.makeText(this@LoginActivity, "Login Failed: " + e.message, Toast.LENGTH_SHORT).show()
+                        progressBar.visibility = View.INVISIBLE
                     }
                 }
     }

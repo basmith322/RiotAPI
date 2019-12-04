@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso
 
 class SummonerDetailsActivity : AppCompatActivity() {
     private lateinit var sensorManager: SensorManager
-    var summonerName: String = ""
+    private var summonerName: String = ""
     private lateinit var progressBar: ProgressBar
 
 
