@@ -3,8 +3,8 @@ package com.example.riotapi.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.riotapi.AdapterClasses.MatchHistoryAdapter
 import com.example.riotapi.R
+import com.example.riotapi.adapterClasses.MatchHistoryAdapter
 import kotlinx.android.synthetic.main.activity_match_history_details.*
 
 class MatchHistoryDetailsActivity : AppCompatActivity() {
@@ -15,6 +15,6 @@ class MatchHistoryDetailsActivity : AppCompatActivity() {
         val summonerName = intent.getStringExtra("summonerName")
 
         recyclerViewMatches.layoutManager = LinearLayoutManager(this)
-        recyclerViewMatches.adapter = MatchHistoryAdapter(summonerName)
+        recyclerViewMatches.adapter = MatchHistoryAdapter(summonerName!!.toString())
     }
 }

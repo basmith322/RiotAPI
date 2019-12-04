@@ -8,8 +8,8 @@ import android.widget.ProgressBar
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.riotapi.AdapterClasses.LadderAdapter
 import com.example.riotapi.R
+import com.example.riotapi.adapterClasses.LadderAdapter
 import com.merakianalytics.orianna.Orianna
 import com.merakianalytics.orianna.types.common.Region
 import kotlinx.android.synthetic.main.activity_ranked_ladder.*

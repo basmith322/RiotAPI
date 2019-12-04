@@ -3,8 +3,8 @@ package com.example.riotapi.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.riotapi.AdapterClasses.ImageAdapter
 import com.example.riotapi.R
+import com.example.riotapi.adapterClasses.ImageAdapter
 import kotlinx.android.synthetic.main.activity_champ_rotation.*
 
 class ChampRotationActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.riotapi.AdapterClasses
+package com.example.riotapi.adapterClasses
 
 import android.view.View
 import android.widget.TextView

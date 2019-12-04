@@ -1,4 +1,4 @@
-package com.example.riotapi.AdapterClasses
+package com.example.riotapi.adapterClasses
 
 import android.content.Intent
 import android.view.View

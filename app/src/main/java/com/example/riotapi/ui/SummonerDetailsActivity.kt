@@ -29,7 +29,7 @@ class SummonerDetailsActivity : AppCompatActivity() {
 //        ShakeMethod().ShakeShakeShakeSenora(sensorManager)
 
         val summonerImage = intent.getStringExtra("summonerImage")
-        summonerName = intent.getStringExtra("summonerName")
+        summonerName = intent.getStringExtra("summonerName")!!.toString()
         val summonerID = intent.getStringExtra("summonerID")
         val summonerLevel = intent.getIntExtra("summonerLevel", 0)
         val summonerRank = intent.getStringExtra("summonerRank")

@@ -23,7 +23,6 @@ import com.merakianalytics.orianna.types.common.Region
 import com.merakianalytics.orianna.types.core.summoner.Summoner
 import com.squareup.picasso.Picasso
 
-
 class SummonerProfileActivity : AppCompatActivity() {
     private var summonerImage = ""
     private var summonerName = ""
