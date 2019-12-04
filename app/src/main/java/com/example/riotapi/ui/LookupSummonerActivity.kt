@@ -82,7 +82,6 @@ class LookupSummonerActivity : AppCompatActivity() {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     currentRegion = Region.BRAZIL
                 }
-
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     currentRegion = SetCurrentRegion().setCurrentRegion(position)
                 }

@@ -15,13 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.MatchHistoryListActivity" />
+
+        <activity
+            android:name=".ui.MatchHistoryDetailsActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="Match Details" />
         <activity
             android:name=".ui.ChampInfoActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Champion Information" />
-        <activity android:name=".ui.LinkedSummonerActivity" />
+        <activity
+            android:name=".ui.LinkedSummonerActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="Link Summoner" />
         <activity
             android:name=".ui.LoginActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Riot API App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,30 +39,39 @@
         </activity>
         <activity
             android:name=".ui.SummonerProfileActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Summoner Profile" />
         <activity
             android:name=".ui.ChampRotationActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Free Champion Rotation" />
         <activity
-            android:name=".ui.MatchHistoryDetailsActivity"
+            android:name=".ui.MatchHistoryListActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Match History" />
         <activity
             android:name=".ui.ServerActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Server Status" />
         <activity
             android:name=".ui.RankedLadderActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Solo Queue Ladder" />
         <activity
             android:name=".ui.MenuActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Main Menu" />
         <activity
             android:name=".ui.LookupSummonerActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Summoner Lookup" />
         <activity
             android:name=".ui.SummonerDetailsActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Summoner Results" />
         <activity
             android:name=".ui.RegisterActivity"
+            android:configChanges="orientation|screenSize"
             android:label="Register" />
     </application>
 

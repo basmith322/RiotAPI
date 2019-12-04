@@ -40,6 +40,7 @@ class LinkedSummonerActivity : AppCompatActivity() {
             firebaseDatabase.getReference(uid).child("region").setValue(region)
             val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

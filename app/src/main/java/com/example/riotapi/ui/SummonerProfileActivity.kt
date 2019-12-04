@@ -112,7 +112,7 @@ class SummonerProfileActivity : AppCompatActivity() {
 
     fun summonerMatchHistory(view: View) {
         progressBar.visibility = View.VISIBLE
-        val intent = Intent(this, MatchHistoryDetailsActivity::class.java)
+        val intent = Intent(this, MatchHistoryListActivity::class.java)
                 .putExtra("summonerName", summonerName)
         startActivity(intent)
     }
