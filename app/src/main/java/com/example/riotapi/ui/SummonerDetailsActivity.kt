@@ -9,8 +9,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
+import com.example.riotapi.Utilities.ShakeMethod
 import com.squareup.picasso.Picasso
 
 
@@ -18,6 +20,7 @@ class SummonerDetailsActivity : AppCompatActivity() {
     private lateinit var sensorManager: SensorManager
     private var summonerName: String = ""
     private lateinit var progressBar: ProgressBar
+    private lateinit var shakeMethod: ShakeMethod
 
 
     @SuppressLint("SetTextI18n")
@@ -26,7 +29,8 @@ class SummonerDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_summoner_details)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-//        ShakeMethod().ShakeShakeShakeSenora(sensorManager)
+        this.shakeMethod = ShakeMethod()
+        this.shakeMethod.shakeShakeShakeSenora(sensorManager, this::onShakeHappened)
 
         val summonerImage = intent.getStringExtra("summonerImage")
         summonerName = intent.getStringExtra("summonerName")!!.toString()
@@ -59,11 +63,13 @@ class SummonerDetailsActivity : AppCompatActivity() {
         progressBar.visibility = View.INVISIBLE
     }
 
-//    fun callback(): Void {
-//        Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
-//        finish()
-//        startActivity(intent)
-//    }
+
+    fun onShakeHappened(): Void? {
+        Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
+        finish()
+        startActivity(intent)
+        return null
+    }
 
     fun summonerMatchHistory(view: View) {
         progressBar.visibility = View.VISIBLE
@@ -72,13 +78,14 @@ class SummonerDetailsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    override fun onPause() {
-//        super.onPause()
-//        sensorManager.unregisterListener(this)
-//    }
+    override fun onPause() {
+        super.onPause()
+        this.shakeMethod.unregister()
+    }
 
     override fun onResume() {
         super.onResume()
+        this.shakeMethod.register()
         progressBar.visibility = View.INVISIBLE
     }
 }

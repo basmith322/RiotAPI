@@ -5,21 +5,30 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import kotlin.math.sqrt
+import kotlin.reflect.KFunction0
 
 class ShakeMethod : SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var sensor: Sensor
     private var shakeThresholdGravity: Float = 2f
     private var lastUpdateTime: Long = 0
-    private var callback: (() -> Void)? = null
+    private lateinit var callback: KFunction0<Void?>
 
-    fun shakeShakeShakeSenora(sensorManager: SensorManager, callback: (() -> Void)?) {
+
+    fun shakeShakeShakeSenora(sensorManager: SensorManager, callback: KFunction0<Void?>) {
         this.sensorManager = sensorManager
-        sensorManager.registerListener(this, sensorManager
-                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
         lastUpdateTime = System.currentTimeMillis()
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         this.callback = callback
+    }
+
+    fun register() {
+        sensorManager.registerListener(this, sensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    fun unregister() {
+        sensorManager.unregisterListener(this)
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
@@ -61,7 +70,7 @@ class ShakeMethod : SensorEventListener {
                 return
             }
             lastUpdateTime = currentTime
-            this.callback?.invoke()
+            this.callback.invoke()
         }
     }
 }
