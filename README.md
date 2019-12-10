@@ -1,9 +1,10 @@
 # RiotAPI
 
 The following is an application that uses the Orianna Java Library https://github.com/meraki-analytics/orianna to
-display information about summoners, servers status and free champions.
+display information about summoners, servers status and free champions and the Picasso Libary https://github.com/square/picasso
+to handle the loading of images throughout the app.
 
-The application is free to use and all rights for any libaries used belong to those of the developers in question.
+The application is free to use and all rights for any libaries or software used belong to the developers responsible for them.
 
 The files included are as follows
 
