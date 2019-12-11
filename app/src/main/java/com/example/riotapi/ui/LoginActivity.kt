@@ -1,8 +1,9 @@
 package com.example.riotapi.ui
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -13,6 +14,8 @@ import com.example.riotapi.Utilities.CloseKeyboard
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
+
+@Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var progressBar: ProgressBar
@@ -21,28 +24,45 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        firebaseAuth = FirebaseAuth.getInstance()
-        progressBar = findViewById(R.id.progressBar_login)
-        progressBar.visibility = View.INVISIBLE
+        if (isConnectedToNetwork()) {
+            firebaseAuth = FirebaseAuth.getInstance()
+            progressBar = findViewById(R.id.progressBar_login)
+            progressBar.visibility = View.INVISIBLE
 
-        if (firebaseAuth.currentUser != null) {
-            startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
-            finish()
+            if (firebaseAuth.currentUser != null) {
+                startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
+                finish()
+            }
+        } else {
+            startActivity(Intent(this@LoginActivity, NoNetwork::class.java))
         }
+    }
+
+    fun Context.isConnectedToNetwork(): Boolean {
+        val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting ?: false
+    }
+
+    fun getValidationError(email: String, password: String): String? {
+        if (email == "") {
+            return "Please enter a valid email address"
+        }
+        if (password == "") {
+            return "Please enter a valid password"
+        }
+        return null
     }
 
     fun loginUser(view: View) {
         val email = findViewById<EditText>(R.id.editTextLoginEmail).text.toString()
         val password = findViewById<EditText>(R.id.editTextLoginPassword).text.toString()
+        val validationError = getValidationError(email, password)
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_LONG).show()
+        if (validationError != null) {
+            Toast.makeText(this, validationError, Toast.LENGTH_LONG).show()
             return
         }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Please enter a valid password", Toast.LENGTH_LONG).show()
-            return
-        }
+
         CloseKeyboard().hideKeyboard(view)
         progressBar.visibility = View.VISIBLE
 
@@ -64,5 +84,21 @@ class LoginActivity : AppCompatActivity() {
 
     fun goRegister(view: View) {
         startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isConnectedToNetwork()) {
+            firebaseAuth = FirebaseAuth.getInstance()
+            progressBar = findViewById(R.id.progressBar_login)
+            progressBar.visibility = View.INVISIBLE
+
+            if (firebaseAuth.currentUser != null) {
+                startActivity(Intent(this@LoginActivity, MenuActivity::class.java))
+                finish()
+            }
+        } else {
+            startActivity(Intent(this@LoginActivity, NoNetwork::class.java))
+        }
     }
 }

@@ -2,7 +2,9 @@ package com.example.riotapi.ui
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -12,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.riotapi.R
 import com.example.riotapi.Utilities.SetCurrentRegion
+import com.example.riotapi.Utilities.ShakeMethod
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,15 +39,28 @@ class SummonerProfileActivity : AppCompatActivity() {
     private lateinit var region: Region
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var progressBar: ProgressBar
+    private lateinit var sensorManager: SensorManager
+    private lateinit var shakeMethod: ShakeMethod
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summoner_profile)
 
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        this.shakeMethod = ShakeMethod()
+        this.shakeMethod.shakeShakeShakeSenora(sensorManager, this::onShakeHappened)
+
         progressBar = findViewById(R.id.progressBarProfile)
         progressBar.visibility = View.VISIBLE
 
         basicRead()
+    }
+
+    fun onShakeHappened(): Void? {
+        Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
+        finish()
+        startActivity(intent)
+        return null
     }
 
     private fun basicRead() {

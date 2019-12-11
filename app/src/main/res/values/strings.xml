@@ -46,4 +46,5 @@
     <string name="txtSide">Side:</string>
     <string name="txtChampionName">Champion Name:</string>
     <string name="txtSelectMatch">Please select a match from the list for more details</string>
+    <string name="txtNoNetwork">There is currnently no network connection. Please turn on WiFi or Mobile Data and go back to the login screen to try again</string>
 </resources>
