@@ -55,20 +55,35 @@ Utilities: These are additional classes that provide certain utility functions
                
 Views: 
 activity_champ_info - shows champion info from the free rotation
+
 activity_champ_rotation - shows the free champion rotation
+
 activity_linked_summoner_activity - provides user input for summoner after registration
+
 activity_login - user login page
+
 activity_lookup_summoner - allows the user to lookup a summoner
+
 activity_match_history_details - shows details of the match history
+
 activity_match_history_list - shows a list of match historyu
+
 activity_menu - provides a menu
+
 activity_no_network - used when no network is detected
+
 activity_ranked_ladder - shows top 20 ranked players
+
 activity_register - user register page
+
 activity_server - shows server status
+
 activity_summoner_details - shows summoner details after lookup
+
 activity_summoner_profile - similar to summoner lookup but for the user profile instead
+
 image_item - used with a layout inflater to populate free champion rotation
+
 text_item - used with match history and ladder inflaters to populate their respective views
-               
+
 Application Developed Using Android Studio 3.5.
