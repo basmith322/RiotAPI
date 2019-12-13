@@ -38,7 +38,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#009688"
-        android:onClick="goToTop10"
+        android:onClick="goToRankedLadder"
         android:text="@string/btnTopLadder"
         app:layout_constraintBottom_toTopOf="@+id/buttonChampRotation"
         app:layout_constraintEnd_toEndOf="parent"

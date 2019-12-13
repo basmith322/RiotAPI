@@ -12,10 +12,12 @@ import com.squareup.picasso.Picasso
 class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val myImageView: ImageView = itemView.findViewById(R.id.myImageView)
 
+    //Loads the url into an image based on the string passed to it by the adapter
     fun updateWithUrl(url: String) {
         Picasso.get().load(url).into(myImageView)
     }
 
+    //Loads all champion information based on the callback into the intent to be used byy the ChampInfoActivity
     fun updateWithCallback(champion: Champion) {
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, ChampInfoActivity::class.java)

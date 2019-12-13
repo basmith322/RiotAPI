@@ -15,6 +15,7 @@ class MatchHistoryDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_history_details)
 
+        //Obtain the values from the MatchHistoryList activity
         val matchDuration = intent.getSerializableExtra("matchDuration")
         val matchMap = intent.getSerializableExtra("matchMap")
         val matchCreated = intent.getSerializableExtra("matchCreated")
@@ -22,7 +23,7 @@ class MatchHistoryDetailsActivity : AppCompatActivity() {
         val matchWinner = intent.getSerializableExtra("matchWinner")
         val championPlayed = intent.getSerializableExtra("championPlayed")
 
-
+        //Place values into appropriate fields
         findViewById<TextView>(R.id.textViewDuration).apply {
             if (matchDuration is Duration) {
                 text = "${getString(R.string.txtDuration)} ${matchDuration.standardMinutes} Minutes"

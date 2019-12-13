@@ -9,12 +9,15 @@ import com.example.riotapi.ui.MatchHistoryDetailsActivity
 import com.merakianalytics.orianna.types.core.match.Match
 
 class MatchHistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    //find the text view to add the values to
     private val myItemView: TextView = itemView.findViewById(R.id.myTextView)
 
+    //Apply the text to the text view
     fun updateWithText(match: String) {
         myItemView.apply { text = match }
     }
 
+    //Pass the values through to be used in the MatchHistoryDetailsActivity
     fun updateWithCallback(match: Match) {
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, MatchHistoryDetailsActivity::class.java)

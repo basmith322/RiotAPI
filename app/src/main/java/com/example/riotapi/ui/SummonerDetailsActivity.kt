@@ -28,22 +28,24 @@ class SummonerDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summoner_details)
 
+        //Instantiate sensormanager and call shake function.
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         this.shakeMethod = ShakeMethod()
         this.shakeMethod.shakeShakeShakeSenora(sensorManager, this::onShakeHappened)
 
+        //Load summoner information into values.
         val summonerImage = intent.getStringExtra("summonerImage")
         summonerName = intent.getStringExtra("summonerName")!!.toString()
         val summonerID = intent.getStringExtra("summonerID")
         val summonerLevel = intent.getIntExtra("summonerLevel", 0)
         val summonerRank = intent.getStringExtra("summonerRank")
         val summonerUpdated = intent.getStringExtra("lastUpdated")
-
         val imageView = findViewById<ImageView>(R.id.imageViewSummoner)
 
         //Loading image using Picasso
         Picasso.get().load(summonerImage).into(imageView)
 
+        //Set the fields to the values created above.
         findViewById<TextView>(R.id.textViewSummonerName).apply {
             text = """${getString(R.string.txtSummonerName)} $summonerName"""
         }
@@ -63,14 +65,15 @@ class SummonerDetailsActivity : AppCompatActivity() {
         progressBar.visibility = View.INVISIBLE
     }
 
-
-    fun onShakeHappened(): Void? {
+    //If a shake occurs, show toast and refresh activity
+    private fun onShakeHappened(): Void? {
         Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
         finish()
         startActivity(intent)
         return null
     }
 
+    //Place match history values in intent for MatchHistoryList
     fun summonerMatchHistory(view: View) {
         progressBar.visibility = View.VISIBLE
         val intent = Intent(this, MatchHistoryListActivity::class.java)
@@ -78,11 +81,13 @@ class SummonerDetailsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    //Unregister shake listener when the activity is paused so it doesn't reactivate
     override fun onPause() {
         super.onPause()
         this.shakeMethod.unregister()
     }
 
+    //Register shake listener when activity is resumed so it can be used again
     override fun onResume() {
         super.onResume()
         this.shakeMethod.register()

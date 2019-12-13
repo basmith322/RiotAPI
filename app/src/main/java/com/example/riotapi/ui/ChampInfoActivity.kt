@@ -14,11 +14,13 @@ class ChampInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champ_info)
 
+        //get the string values passed from the champion rotation activity
         val champName = intent.getStringExtra("champName")
         val champBlurb = intent.getStringExtra("champDetails")
         val champAbilities = intent.getStringExtra("champAbilities")
         val champImage = intent.getStringExtra("champImage")
 
+        //Load values into appropriate views
         findViewById<ImageView>(R.id.imageViewChampImage).apply {
             Picasso.get().load(champImage).into(imageViewChampImage)
         }

@@ -27,6 +27,7 @@ class RankedLadderActivity : AppCompatActivity() {
         setServerForLadder()
     }
 
+    //Function to set the server based on the spinner
     private fun setServerForLadder() {
         val regions = resources.getStringArray(R.array.spnRegion)
         val spinner = findViewById<Spinner>(R.id.spinnerRankedRegion)
@@ -38,18 +39,16 @@ class RankedLadderActivity : AppCompatActivity() {
                     android.R.layout.simple_spinner_dropdown_item, regions)
             spinner.adapter = adapter
 
-            //Set up on selected item listener
             spinner.onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
 
-                //if no option is selected set default region to avoid crashing
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     Orianna.setDefaultRegion(Region.EUROPE_WEST)
                 }
 
-                //Set the region based on which option is selected
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View?, position: Int, id: Long) {
+                    //When a region is selected, load the values from the LadderAdapter into the recyclerview
                     recyclerViewRanked.layoutManager = LinearLayoutManager(this@RankedLadderActivity)
                     recyclerViewRanked.adapter = LadderAdapter(position)
                     progressBar.visibility = View.GONE

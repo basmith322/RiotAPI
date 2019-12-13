@@ -2,7 +2,6 @@ package com.example.riotapi.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -29,21 +28,33 @@ class RegisterActivity : AppCompatActivity() {
         progressBar.visibility = View.INVISIBLE
     }
 
+    //Perform validation check if there are email and password strings. Email and Password formatting are handled by Firebase.
+    private fun getRegisterValidationError(email: String, password: String): String? {
+        if (email == "") {
+            return "Please enter a valid email address"
+        }
+        if (password == "") {
+            return "Please enter a valid password"
+        }
+        return null
+    }
+
     fun registerUser(view: View) {
+        //Obtain email and password from text fields and pass them to validation check function
         val email = findViewById<EditText>(R.id.editTextRegEmail).text.toString()
         val password = findViewById<EditText>(R.id.editTextRegPassword).text.toString()
+        val validationError = getRegisterValidationError(email, password)
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_LONG).show()
+        //Only allow the user to continue if the values pass validation check.
+        if (validationError != null) {
+            Toast.makeText(this, validationError, Toast.LENGTH_LONG).show()
             return
         }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Please enter a valid password", Toast.LENGTH_LONG).show()
-            return
-        }
+
         CloseKeyboard().hideKeyboard(view)
         progressBar.visibility = View.VISIBLE
 
+        //Attempt Register. If formatting is not correct or there is a Firebase error, user will not be registered.
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this@RegisterActivity) { task ->
                     //checking if successful
@@ -58,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
     }
+
     fun goLogin(view: View) {
         startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
     }

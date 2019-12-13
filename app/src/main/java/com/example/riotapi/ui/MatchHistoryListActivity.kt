@@ -14,6 +14,7 @@ class MatchHistoryListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_match_history_list)
         val summonerName = intent.getStringExtra("summonerName")
 
+        //Setup layoutManager to show in a 3 column grid and load the recyclerview with matches from the MatchesAdapter
         recyclerViewMatches.layoutManager = LinearLayoutManager(this)
         recyclerViewMatches.adapter = MatchHistoryAdapter(summonerName!!.toString())
     }

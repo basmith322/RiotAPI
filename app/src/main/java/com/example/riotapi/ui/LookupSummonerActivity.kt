@@ -36,6 +36,7 @@ class LookupSummonerActivity : AppCompatActivity() {
         setServerForLookup()
     }
 
+    //Take the summoner name and obtains their Name, ID, Level, Rank, Level and the last updated time
     fun sendSummoner(view: View) {
         summoner = Orianna.summonerNamed(editTextSummoner.text.toString()).withRegion(currentRegion).get()
         progressBar.visibility = View.VISIBLE
@@ -59,6 +60,7 @@ class LookupSummonerActivity : AppCompatActivity() {
             }
             lastUpdated = summoner.updated
 
+            //Put the values into the intent to be retrieved in SummonerDetailsActivity
             val intent = Intent(this@LookupSummonerActivity, SummonerDetailsActivity::class.java)
                     .putExtra("summonerName", summonerName)
                     .putExtra("summonerID", summonerID)
@@ -70,6 +72,7 @@ class LookupSummonerActivity : AppCompatActivity() {
         }
     }
 
+    //Set the server based on the spinner value
     private fun setServerForLookup() {
         val regions = resources.getStringArray(R.array.spnRegion)
         val spinner = findViewById<Spinner>(R.id.spnRegionSummoner)
@@ -82,6 +85,7 @@ class LookupSummonerActivity : AppCompatActivity() {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     currentRegion = Region.BRAZIL
                 }
+
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     currentRegion = SetCurrentRegion().setCurrentRegion(position)
                 }

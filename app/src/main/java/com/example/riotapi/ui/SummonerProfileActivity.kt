@@ -46,6 +46,7 @@ class SummonerProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summoner_profile)
 
+        //Instantiate sensormanager and call shake function.
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         this.shakeMethod = ShakeMethod()
         this.shakeMethod.shakeShakeShakeSenora(sensorManager, this::onShakeHappened)
@@ -56,6 +57,7 @@ class SummonerProfileActivity : AppCompatActivity() {
         basicRead()
     }
 
+    //If a shake occurs, show toast and refresh activity
     fun onShakeHappened(): Void? {
         Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
         finish()
@@ -63,6 +65,7 @@ class SummonerProfileActivity : AppCompatActivity() {
         return null
     }
 
+    //read the region and summoner name stored in the database dependent on their unique user ID
     private fun basicRead() {
         progressBar.visibility = View.VISIBLE
         val user = FirebaseAuth.getInstance().currentUser
@@ -78,16 +81,20 @@ class SummonerProfileActivity : AppCompatActivity() {
                     getSummoner()
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
                 //failed to read value
             }
         })
     }
 
+
     @SuppressLint("SetTextI18n")
+    //Take the summoner name and obtains their Name, ID, Level, Rank, Level and the last updated time
     private fun getSummoner() {
         region = SetCurrentRegion().setCurrentRegion(regionFromDB!!.toInt())
         summoner = Orianna.summonerNamed(summonerNameFromDB).withRegion(region).get()
+        //if there is no summoner ID, provide toast of "No summoner found". If there is, load summoner information into values.
         if (summoner.id == null) {
             Toast.makeText(this@SummonerProfileActivity, "No summoner found", Toast.LENGTH_LONG).show()
         } else {
@@ -103,8 +110,8 @@ class SummonerProfileActivity : AppCompatActivity() {
                 summonerDivision = summoner.getLeaguePosition(Queue.RANKED_SOLO).division.toString()
             }
 
+            //Set the fields to the values created above.
             val lastUpdated = summoner.updated
-
             val imageView = findViewById<ImageView>(R.id.imageViewSummonerProfileIcon)
             Picasso.get().load(summonerImage).into(imageView)
             findViewById<TextView>(R.id.textViewSummonerProfileName).apply {
@@ -126,6 +133,7 @@ class SummonerProfileActivity : AppCompatActivity() {
         progressBar.visibility = View.INVISIBLE
     }
 
+    //Place match history values in intent for MatchHistoryList
     fun summonerMatchHistory(view: View) {
         progressBar.visibility = View.VISIBLE
         val intent = Intent(this, MatchHistoryListActivity::class.java)
@@ -135,7 +143,6 @@ class SummonerProfileActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-
         progressBar.visibility = View.INVISIBLE
     }
 }

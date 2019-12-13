@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //Validation check to ensure app is connected to network
         if (isConnectedToNetwork()) {
             firebaseAuth = FirebaseAuth.getInstance()
             progressBar = findViewById(R.id.progressBar_login)
@@ -38,12 +39,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun Context.isConnectedToNetwork(): Boolean {
+    //Returns if there is a network connection or not
+    private fun Context.isConnectedToNetwork(): Boolean {
         val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
         return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting ?: false
     }
 
-    fun getValidationError(email: String, password: String): String? {
+    //Perform validation check if there are email and password strings. Email and Password formatting are handled by Firebase.
+    fun getLoginValidationError(email: String, password: String): String? {
         if (email == "") {
             return "Please enter a valid email address"
         }
@@ -54,10 +57,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun loginUser(view: View) {
+        //Obtain email and password from text fields and pass them to validation check function
         val email = findViewById<EditText>(R.id.editTextLoginEmail).text.toString()
         val password = findViewById<EditText>(R.id.editTextLoginPassword).text.toString()
-        val validationError = getValidationError(email, password)
+        val validationError = getLoginValidationError(email, password)
 
+        //Only allow the user to continue if the values pass validation check.
         if (validationError != null) {
             Toast.makeText(this, validationError, Toast.LENGTH_LONG).show()
             return
@@ -66,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
         CloseKeyboard().hideKeyboard(view)
         progressBar.visibility = View.VISIBLE
 
+        //Attempt signin. If user does not exist or password/email are of poor format, user will not be logged in and cannot continue.
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this@LoginActivity) { task ->
                     //checking if successful
@@ -86,6 +92,7 @@ class LoginActivity : AppCompatActivity() {
         startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
     }
 
+    //Again check if there is network connection.
     override fun onResume() {
         super.onResume()
         if (isConnectedToNetwork()) {

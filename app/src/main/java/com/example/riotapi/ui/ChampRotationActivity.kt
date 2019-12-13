@@ -12,6 +12,7 @@ class ChampRotationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_champ_rotation)
 
+        //Setup layoutManager to show in a 3 column grid and load the recyclerview with images from the ImageAdapter
         imageRecycler.layoutManager = GridLayoutManager(this, 3)
         imageRecycler.adapter = ImageAdapter()
 

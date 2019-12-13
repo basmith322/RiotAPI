@@ -22,17 +22,21 @@ class LinkedSummonerActivity : AppCompatActivity() {
 
         //Instantiate Database
         firebaseDatabase = FirebaseDatabase.getInstance()
-        setServerForLookup()
+        setServer()
 
     }
 
     fun basicWrite(view: View) {
+        //Obtain values from the text field, load the spinner with objects and load the regions into the spinner at each position
         val summonerName = findViewById<TextView>(R.id.editTextSummonerProfileSetup).text.toString()
         val spinner = findViewById<Spinner>(R.id.spinnerNewSummoner)
         val region = spinner.selectedItemPosition
+
+        //Perform validiation if the summoner name is empty and do not allow progress if it is
         if (TextUtils.isEmpty(summonerName)) {
             Toast.makeText(this, "Please enter your summoner name", Toast.LENGTH_LONG).show()
         } else {
+            //Get instance of firebase based on current user. Write their summoner name and region to the database and load the menu
             val user = FirebaseAuth.getInstance().currentUser
             var uid = ""
             user?.let { uid = user.uid }
@@ -44,7 +48,8 @@ class LinkedSummonerActivity : AppCompatActivity() {
         }
     }
 
-    private fun setServerForLookup() {
+    // Function to set the correct server based on the spinner menu
+    private fun setServer() {
         val regions = resources.getStringArray(R.array.spnRegion)
         val spinner = findViewById<Spinner>(R.id.spinnerNewSummoner)
 

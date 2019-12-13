@@ -28,7 +28,7 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun goToTop10(view: View) {
+    fun goToRankedLadder(view: View) {
         progressBar.visibility = View.VISIBLE
         val intent = Intent(this, RankedLadderActivity::class.java)
         startActivity(intent)
