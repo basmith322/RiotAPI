@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     //Perform validation check if there are email and password strings. Email and Password formatting are handled by Firebase.
-    private fun getRegisterValidationError(email: String, password: String): String? {
+    fun getRegisterValidationError(email: String, password: String): String? {
         if (email == "") {
             return "Please enter a valid email address"
         }
