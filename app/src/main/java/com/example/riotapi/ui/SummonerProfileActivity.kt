@@ -58,7 +58,7 @@ class SummonerProfileActivity : AppCompatActivity() {
     }
 
     //If a shake occurs, show toast and refresh activity
-    fun onShakeHappened(): Void? {
+    private fun onShakeHappened(): Void? {
         Toast.makeText(this, "Page was refreshed", Toast.LENGTH_LONG).show()
         finish()
         startActivity(intent)

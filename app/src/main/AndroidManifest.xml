@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.NoNetwork"></activity>
+        <activity android:name=".ui.NoNetwork" />
         <activity
             android:name=".ui.MatchHistoryDetailsActivity"
             android:configChanges="orientation|screenSize"
